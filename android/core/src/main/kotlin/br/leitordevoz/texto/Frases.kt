@@ -14,9 +14,9 @@ object Frases {
         "dept", "depto", "univ", "coord", "org", "orgs", "trad", "rev", "reimpr", "aux",
     )
 
-    private val FIM = Regex("(?U)([.!?…]+[\"'”»)\\]]*)\\s+(?=[\"'“«(\\[]?[A-ZÁÉÍÓÚÂÊÔÃÕÀÇ0-9¿¡—–-])")
+    private val FIM = Rx.u("([.!?…]+[\"'”»)\\]]*)\\s+(?=[\"'“«(\\[]?[A-ZÁÉÍÓÚÂÊÔÃÕÀÇ0-9¿¡—–-])")
     private val ULTIMA = Regex("(\\S+)\\.$")
-    private val SIGLA = Regex("(?U)(\\w\\.)+\\w")
+    private val SIGLA = Rx.u("(\\w\\.)+\\w")
     private val NUMERACAO = Regex("\\d+(\\.\\d+)*")
 
     fun dividir(paragrafo: String): List<String> {
@@ -56,11 +56,11 @@ object Frases {
     private fun quebrarLonga(frase: String): List<String> {
         if (frase.length <= MAX_FRASE) return listOf(frase)
         val meio = frase.length / 2
-        var melhores = Regex("(?U)[;:,—–]\\s").findAll(frase).map { it.range.last + 1 }.toList()
+        var melhores = Rx.u("[;:,—–]\\s").findAll(frase).map { it.range.last + 1 }.toList()
         if (melhores.isEmpty()) {
-            melhores = Regex("(?U)\\s(?=(e|ou|mas|porém|que|quando|onde|pois)\\s)").findAll(frase).map { it.range.last + 1 }.toList()
+            melhores = Rx.u("\\s(?=(e|ou|mas|porém|que|quando|onde|pois)\\s)").findAll(frase).map { it.range.last + 1 }.toList()
         }
-        if (melhores.isEmpty()) melhores = Regex("(?U)\\s").findAll(frase).map { it.range.last + 1 }.toList()
+        if (melhores.isEmpty()) melhores = Rx.u("\\s").findAll(frase).map { it.range.last + 1 }.toList()
         if (melhores.isEmpty()) return listOf(frase)
         val corte = melhores.minBy { kotlin.math.abs(it - meio) }
         return quebrarLonga(frase.substring(0, corte).trim()) + quebrarLonga(frase.substring(corte).trim())

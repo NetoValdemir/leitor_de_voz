@@ -1,5 +1,7 @@
 package br.leitordevoz.voz
 
+import br.leitordevoz.texto.Rx
+
 /**
  * Acesso ao espeak-ng (biblioteca nativa). No Android, a biblioteca é carregada
  * pelo app; nos testes, pelo próprio teste.
@@ -153,8 +155,7 @@ class Fonemizador(private val espeak: Espeak) {
         ).sortedBy { it.first }
 
         /** Punctuation(';:,.!?¡¿—…"«»“”(){}[]') — vírgula e ponto entre dígitos não contam. */
-        private val MARCAS_RE = Regex(
-            "(?U)(\\s*(?:[;:!?¡¿—…\"«»“”(){}\\[\\]]|(?<![0-9])[,.]|[,.](?![0-9]))+\\s*)+"
+        private val MARCAS_RE = Rx.u("(\\s*(?:[;:!?¡¿—…\"«»“”()\\{\\}\\[\\]]|(?<![0-9])[,.]|[,.](?![0-9]))+\\s*)+"
         )
         private val FLAGS_IDIOMA = Regex("\\(.+?\\)")
     }

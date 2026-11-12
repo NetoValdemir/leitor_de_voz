@@ -1,5 +1,7 @@
 package br.leitordevoz.voz
 
+import br.leitordevoz.texto.Rx
+
 import ai.onnxruntime.OnnxTensor
 import ai.onnxruntime.OrtEnvironment
 import ai.onnxruntime.OrtSession
@@ -37,7 +39,7 @@ class MotorKokoro(
 
     /** Texto já pronto para a fala (preparado + dicionário aplicados). */
     fun sintetizar(texto: String, voz: String, velocidade: Float): ShortArray {
-        if (!Regex("(?U)\\w").containsMatchIn(texto)) return ShortArray(TAXA / 10)
+        if (!Rx.u("\\w").containsMatchIn(texto)) return ShortArray(TAXA / 10)
         val estilo = estilos[voz] ?: estilos.values.first()
         val partes = dividir(fonemizador.fonemas(texto))
         val blocos = partes.mapNotNull { parte ->
@@ -80,7 +82,7 @@ class MotorKokoro(
             if (ps.length <= limite) return listOf(ps)
             val partes = mutableListOf<String>()
             var atual = ""
-            for (pedaco in Regex("(?U)(?<=[,;:.!?])\\s+").split(ps)) {
+            for (pedaco in Rx.u("(?<=[,;:.!?])\\s+").split(ps)) {
                 if (atual.isNotEmpty() && atual.length + pedaco.length + 1 > limite) { partes.add(atual); atual = pedaco }
                 else atual = "$atual $pedaco".trim()
             }

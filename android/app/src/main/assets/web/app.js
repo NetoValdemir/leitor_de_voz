@@ -479,6 +479,18 @@ dlg.addEventListener("close", pararTeste);
   el.velValor.textContent = fmtVel(el.velocidade.value);
   const info = infoModelo();
   if (info.pronto) tela("entrada"); else abrirPreparo();
+  try {
+    const falha = Android.ultimaFalha();
+    if (falha) {
+      $("texto-falha").textContent = falha;
+      mostrar($("aviso-falha"), true);
+      $("btn-copiar-falha").addEventListener("click", async () => {
+        try { await navigator.clipboard.writeText(falha); $("btn-copiar-falha").textContent = "Copiado ✓"; }
+        catch { const r = document.createRange(); r.selectNodeContents($("texto-falha")); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); $("btn-copiar-falha").textContent = "Copiado ✓"; }
+      });
+      $("btn-fechar-falha").addEventListener("click", () => mostrar($("aviso-falha"), false));
+    }
+  } catch { /* versão antiga da ponte */ }
   Android.ajustar(el.voz.value, Number(el.velocidade.value), Number(el.pausas.value));
   Android.pronto();
 })();

@@ -12,7 +12,7 @@ permissions:
 jobs:
   apk:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
 
@@ -53,6 +53,33 @@ jobs:
       - name: Compilar o APK
         working-directory: android
         run: ./gradlew --no-daemon :app:assembleRelease
+
+      # Teste no Android de verdade (emulador): roda o núcleo com o motor de expressões ICU,
+      # o PdfBox-Android e o espeak-ng nativo, comparando com os gabaritos do app Python.
+      # Se falhar, o APK não é publicado.
+      - name: Habilitar aceleração (KVM) para o emulador
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Testar o núcleo num emulador Android
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          working-directory: android
+          script: ./gradlew --no-daemon -PabisTeste :app:connectedDebugAndroidTest
+
+      - name: Guardar relatório dos testes no emulador
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-testes-android
+          path: android/app/build/reports/androidTests/
 
       - name: Nomear o APK
         run: cp android/app/build/outputs/apk/release/app-release.apk "LeitorDeVoz-v${{ github.run_number }}.apk"

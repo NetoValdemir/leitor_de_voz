@@ -19,6 +19,17 @@
   </header>
 
   <main>
+    <div id="aviso-falha" class="aviso aviso-falha" hidden>
+      <div>
+        <strong>O app encontrou um erro da última vez.</strong>
+        <span>Copie o detalhe abaixo e envie para quem mantém o app.</span>
+        <details><summary>Ver detalhe</summary><pre id="texto-falha"></pre></details>
+      </div>
+      <div class="aviso-botoes">
+        <button id="btn-copiar-falha" class="btn-sec">Copiar</button>
+        <button id="btn-fechar-falha" class="btn-sec">Fechar</button>
+      </div>
+    </div>
     <!-- Primeiro uso: baixar a voz -->
     <section id="preparo" class="entrada" hidden>
       <h1>Falta só a voz</h1>

@@ -356,7 +356,7 @@ object LeitorDoc {
     }
 
     private fun limparMarcas(t: String): String =
-        Regex("[\u0000-\u0006\u0008\u000e-\u0012\u0016-\u001d]").replace(
+        Regex("[\\x{00}-\\x{06}\\x{08}\\x{0e}-\\x{12}\\x{16}-\\x{1d}]").replace(
             t.replace('\u000b', ' ').replace('\u000c', ' ').replace("\u001e", "-").replace("\u001f", ""), ""
         )
 }

@@ -16,6 +16,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        RegistroDeFalhas.instalar(this)
         PDFBoxResourceLoader.init(this)
         recursos = Recursos(this)
         pronuncias = Pronuncias(this)

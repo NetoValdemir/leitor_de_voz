@@ -50,9 +50,22 @@ class Leitor(
     private var quadrosEscritos = 0L
     private var medias = ArrayDeque<Double>()
 
-    private val sintetizador = Thread({ loopSintese() }, "leitor-sintese").apply { isDaemon = true; priority = Thread.NORM_PRIORITY + 1 }
-    private val reprodutor = Thread({ loopReproducao() }, "leitor-audio").apply { isDaemon = true; priority = Thread.MAX_PRIORITY }
-    private val relogio = Thread({ loopPosicao() }, "leitor-posicao").apply { isDaemon = true }
+    /** Roda um laço protegido: um erro inesperado vira aviso na tela, não fecha o app. */
+    private fun protegido(nome: String, corpo: () -> Unit) = Runnable {
+        while (!encerrado) {
+            try { corpo(); return@Runnable } catch (e: InterruptedException) { return@Runnable } catch (e: Throwable) {
+                android.util.Log.e("Leitor", "erro em $nome", e)
+                RegistroDeFalhas.registrar(e, nome)
+                synchronized(trava) { tocando = false; geracao++; trava.notifyAll() }
+                eventos.erro("Erro na leitura ($nome): ${e.message ?: e.javaClass.simpleName}")
+                Thread.sleep(500)
+            }
+        }
+    }
+
+    private val sintetizador = Thread(protegido("síntese") { loopSintese() }, "leitor-sintese").apply { isDaemon = true; priority = Thread.NORM_PRIORITY + 1 }
+    private val reprodutor = Thread(protegido("áudio") { loopReproducao() }, "leitor-audio").apply { isDaemon = true; priority = Thread.MAX_PRIORITY }
+    private val relogio = Thread(protegido("posição") { loopPosicao() }, "leitor-posicao").apply { isDaemon = true }
 
     init { sintetizador.start(); reprodutor.start(); relogio.start() }
 
@@ -168,6 +181,8 @@ class Leitor(
                     if (versao == versaoAudio && frases.getOrNull(idx) === frase) { cache[idx] = versao to pcm; trava.notifyAll() }
                 }
             } catch (e: Throwable) {
+                android.util.Log.e("Leitor", "erro na síntese", e)
+                RegistroDeFalhas.registrar(e, "síntese")
                 synchronized(trava) { tocando = false; trava.notifyAll() }
                 eventos.erro("Erro ao gerar a voz: ${e.message ?: e.javaClass.simpleName}")
                 synchronized(trava) { if (!encerrado) trava.wait(1000) }
@@ -256,11 +271,13 @@ class Leitor(
 
     private fun terminarQuandoEsvaziar(t: AudioTrack, ger: Int) {
         Thread {
+            try {
             val alvo = quadrosEscritos
             while (geracao == ger && !encerrado && t.playbackHeadPosition.toLong() and 0xFFFFFFFFL < alvo - 100) Thread.sleep(100)
             synchronized(trava) {
                 if (geracao == ger && !encerrado) { tocando = false; atual = frases.size - 1; eventos.fim() }
             }
+            } catch (e: Throwable) { RegistroDeFalhas.registrar(e, "fim da leitura") }
         }.apply { isDaemon = true }.start()
     }
 

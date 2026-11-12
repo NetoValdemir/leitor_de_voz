@@ -1,5 +1,7 @@
 package br.leitordevoz.extracao
 
+import br.leitordevoz.texto.Rx
+
 import br.leitordevoz.texto.Bloco
 import br.leitordevoz.texto.Documento
 import br.leitordevoz.texto.ErroExtracao
@@ -171,7 +173,7 @@ object LayoutPdf {
         var segs = l.segmentos.map { Triple(it.first, it.second, Texto.limparEspacos(it.third)) }.filter { it.third.isNotEmpty() }
         if (segs.isEmpty()) return ""
         // Pontilhado de sumário: "Introdução ........ 3"
-        segs = segs.map { Triple(it.first, it.second, Regex("(?U)\\s*[.·…_]{3,}[\\s.·…_]*(\\d+)?$").replace(it.third, "")) }
+        segs = segs.map { Triple(it.first, it.second, Rx.u("\\s*[.·…_]{3,}[\\s.·…_]*(\\d+)?$").replace(it.third, "")) }
             .filter { it.third.isNotEmpty() }
         if (segs.size >= 2 && Regex("(?i)\\d{1,4}|[ivxlcdm]{1,6}").matches(segs.last().third)) {
             if (segs.last().first - segs[segs.size - 2].second > 40) {   // número de página afastado à direita
@@ -201,7 +203,7 @@ object LayoutPdf {
             val minimo = if (nPaginas <= 4) 2 else max(3, (nPaginas * 0.3).toInt())
             contagem.filter { it.value >= minimo }.keys.forEach { repetidas.add(it) }
         }
-        val numeroPagina = Regex("(?iU)(p[áa]g(ina)?\\.?\\s*)?[-–—]?\\s*\\d{1,4}\\s*[-–—]?(\\s*(de|/|of)\\s*\\d{1,4})?")
+        val numeroPagina = Rx.u(ignorarCaixa = true, padrao = "(p[áa]g(ina)?\\.?\\s*)?[-–—]?\\s*\\d{1,4}\\s*[-–—]?(\\s*(de|/|of)\\s*\\d{1,4})?")
         return linhas.filter { !(zona(it) && (norm(it.texto) in repetidas || numeroPagina.matches(it.texto.trim()))) }
     }
 

@@ -15,7 +15,12 @@ android {
         // Número da execução do GitHub Actions: cada APK novo atualiza o anterior
         versionCode = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInt()
         versionName = "1.0.${System.getenv("GITHUB_RUN_NUMBER") ?: "0"}"
-        ndk { abiFilters += listOf("arm64-v8a") }   // Galaxy A35 e celulares atuais
+        ndk {
+            abiFilters += listOf("arm64-v8a")   // Galaxy A35 e celulares atuais
+            // Testes no emulador do GitHub Actions (x86_64): ./gradlew -PabisTeste ...
+            if (project.hasProperty("abisTeste")) abiFilters += listOf("x86_64")
+        }
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
                 arguments += listOf("-DANDROID_STL=none")
@@ -59,6 +64,8 @@ android {
     kotlinOptions { jvmTarget = "17" }
 
     androidResources { noCompress += listOf("f32") }
+    // Gabaritos do app Python (testes/) também servem aos testes no Android
+    sourceSets.getByName("androidTest").assets.srcDirs(file("../../testes"))
     packaging {
         resources {
             excludes += listOf(
@@ -73,8 +80,7 @@ dependencies {
     implementation(project(":core"))
     implementation("com.microsoft.onnxruntime:onnxruntime-android:1.29.0")
     implementation("com.tom-roush:pdfbox-android:2.0.27.0")
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.activity:activity-ktx:1.9.3")
-    implementation("androidx.webkit:webkit:1.12.1")
-    implementation("androidx.media:media:1.7.0")
+
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
 }

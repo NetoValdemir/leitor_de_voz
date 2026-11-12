@@ -169,8 +169,10 @@ class MainActivity : Activity() {
                 enviar(JSONObject().put("tipo", "erro-extracao").put("mensagem", e.message))
             } catch (e: OutOfMemoryError) {
                 enviar(JSONObject().put("tipo", "erro-extracao").put("mensagem", "O documento é grande demais para a memória do aparelho."))
-            } catch (e: Exception) {
-                enviar(JSONObject().put("tipo", "erro-extracao").put("mensagem", "Não foi possível ler o conteúdo (${e.javaClass.simpleName})."))
+            } catch (e: Throwable) {
+                android.util.Log.e("Leitor", "erro na extração", e)
+                RegistroDeFalhas.registrar(e, "extração de \"$rotulo\"")
+                enviar(JSONObject().put("tipo", "erro-extracao").put("mensagem", "Não foi possível ler o conteúdo (${e.javaClass.simpleName}: ${e.message ?: ""})."))
             }
         }
     }
@@ -256,6 +258,7 @@ class MainActivity : Activity() {
                     servico?.preaquecer()
                     enviar(JSONObject().put("tipo", "download-fim"))
                 } catch (e: Throwable) {
+                    if (e !is InterruptedException) RegistroDeFalhas.registrar(e, "download do modelo")
                     enviar(JSONObject().put("tipo", "download-erro").put("mensagem", e.message ?: "Falha no download. Verifique a conexão e tente de novo."))
                 }
             }.start()
@@ -289,12 +292,16 @@ class MainActivity : Activity() {
                     val pcm = s.obterMotor().sintetizar(preparado, voz, velocidade.toFloat())
                     Teste.tocar(pcm) { enviar(JSONObject().put("tipo", "teste-fim")) }
                 } catch (e: Throwable) {
+                    RegistroDeFalhas.registrar(e, "teste de pronúncia")
                     enviar(JSONObject().put("tipo", "teste-erro").put("mensagem", e.message ?: "erro"))
                 }
             }
         }
 
         @JavascriptInterface fun pararTeste() = Teste.parar()
+
+        /** Falha registrada na execução anterior (para mostrar e copiar); apagada depois de lida. */
+        @JavascriptInterface fun ultimaFalha(): String = RegistroDeFalhas.lerEApagar(this@MainActivity).orEmpty()
 
         @JavascriptInterface fun versao(): String = packageManager.getPackageInfo(packageName, 0).versionName ?: ""
     }

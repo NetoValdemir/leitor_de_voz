@@ -20,8 +20,16 @@ object Vozes {
 class Recursos(private val ctx: Context) {
     val fonemizador: Fonemizador by lazy {
         System.loadLibrary("espeak_jni")
-        Fonemizador(EspeakNativo(copiarDadosEspeak().absolutePath))
+        var pasta = copiarDadosEspeak()
+        // O espeak-ng ENCERRA o app (exit) se os dados estiverem incompletos: conferir antes.
+        if (!dadosCompletos(pasta)) { File(pasta, ".versao").delete(); pasta = copiarDadosEspeak() }
+        check(dadosCompletos(pasta)) { "Os dados de pronúncia (espeak-ng) não foram copiados corretamente. Reinstale o app." }
+        Fonemizador(EspeakNativo(pasta.absolutePath))
     }
+
+    private fun dadosCompletos(pasta: File) =
+        listOf("phontab", "phonindex", "phondata", "intonations", "pt_dict", "en_dict", "lang/roa/pt-BR")
+            .all { File(pasta, it).let { f -> f.isFile && f.length() > 0 } }
 
     val estilos: Map<String, FloatArray> by lazy {
         Vozes.LISTA.associate { (id, _) -> id to MotorKokoro.lerEstilo(ctx.assets.open("vozes/$id.f32").use { it.readBytes() }) }

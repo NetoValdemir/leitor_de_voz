@@ -71,10 +71,10 @@ object Texto {
 
     private val HIFENS = Regex("[‐‑‒⁃−]")
     private val INVISIVEIS = Regex("[-�​-‍﻿]")
-    val ESPACOS = Regex("(?U)\\s+")
-    private val HIFEN_FINAL = Regex("(?U)\\w[-‐‑­]$")
-    private val NAO_PALAVRA = Regex("(?U)\\W+")
-    private val PALAVRA = Regex("(?U)\\w")
+    val ESPACOS = Rx.u("\\s+")
+    private val HIFEN_FINAL = Rx.u("\\w[-‐‑­]$")
+    private val NAO_PALAVRA = Rx.u("\\W+")
+    private val PALAVRA = Rx.u("\\w")
 }
 
 /** Leitura de TXT (e alternativa genérica para texto corrido). */
@@ -82,7 +82,7 @@ object LeitorTxt {
     fun extrair(texto: String, nome: String = ""): Documento {
         val t = texto.replace("\r\n", "\n").replace("\r", "\n")
         val blocos = mutableListOf<Bloco>()
-        for (trecho in Regex("(?U)\\n\\s*\\n").split(t)) {
+        for (trecho in Rx.u("\\n\\s*\\n").split(t)) {
             val linhas = trecho.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
             if (linhas.isEmpty()) continue
             // Linha única, curta e sem pontuação final → título
