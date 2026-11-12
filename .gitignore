@@ -1,0 +1,14 @@
+# Modelos de voz (grandes demais para o GitHub): baixe com "python baixar_vozes.py"
+voices/*.onnx
+voices/*.onnx.json
+voices/kokoro/
+*.parcial
+
+# Ambiente e cache do Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Dicionário de pronúncia pessoal (versões antigas salvavam na pasta do app)
+pronuncias*.json
