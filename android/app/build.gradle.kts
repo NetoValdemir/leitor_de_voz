@@ -16,7 +16,12 @@ android {
         versionCode = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInt()
         versionName = "1.0.${System.getenv("GITHUB_RUN_NUMBER") ?: "0"}"
         ndk { abiFilters += listOf("arm64-v8a") }   // Galaxy A35 e celulares atuais
-        externalNativeBuild { cmake { arguments += listOf("-DANDROID_STL=none") } }
+        externalNativeBuild {
+            cmake {
+                arguments += listOf("-DANDROID_STL=none")
+                targets += listOf("espeak_jni")   // só a biblioteca do app (não o executável do espeak)
+            }
+        }
     }
 
     // Assinatura: a chave NUNCA fica no repositório. O GitHub Actions a fornece por
@@ -54,7 +59,14 @@ android {
     kotlinOptions { jvmTarget = "17" }
 
     androidResources { noCompress += listOf("f32") }
-    packaging { resources { excludes += listOf("META-INF/*.md", "META-INF/LICENSE*", "META-INF/NOTICE*", "META-INF/DEPENDENCIES") } }
+    packaging {
+        resources {
+            excludes += listOf(
+                "META-INF/*.md", "META-INF/LICENSE*", "META-INF/NOTICE*", "META-INF/DEPENDENCIES",
+                "META-INF/versions/**", "META-INF/*.kotlin_module", "META-INF/INDEX.LIST",
+            )
+        }
+    }
 }
 
 dependencies {

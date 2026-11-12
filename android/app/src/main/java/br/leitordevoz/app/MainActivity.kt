@@ -75,16 +75,19 @@ class MainActivity : Activity() {
             loadUrl("file:///android_asset/web/index.html")
         }
         setContentView(web)
-        // Android 15: o app desenha atrás das barras do sistema; a página recebe as margens seguras
-        web.setOnApplyWindowInsetsListener { v, insets ->
-            val d = resources.displayMetrics.density
-            val (topo, base) = if (Build.VERSION.SDK_INT >= 30) {
+        // A partir do Android 11 o app desenha atrás das barras do sistema (como o Android 15
+        // exige); a página recebe as margens seguras para não ficar escondida atrás delas.
+        if (Build.VERSION.SDK_INT >= 30) {
+            window.setDecorFitsSystemWindows(false)
+            window.statusBarColor = android.graphics.Color.TRANSPARENT
+            window.navigationBarColor = android.graphics.Color.TRANSPARENT
+            web.setOnApplyWindowInsetsListener { v, insets ->
+                val d = resources.displayMetrics.density
                 val b = insets.getInsets(WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout())
-                b.top to b.bottom
-            } else @Suppress("DEPRECATION") (insets.systemWindowInsetTop to insets.systemWindowInsetBottom)
-            margens = (topo / d).toInt() to (base / d).toInt()
-            aplicarMargens()
-            v.onApplyWindowInsets(insets)
+                margens = (b.top / d).toInt() to (b.bottom / d).toInt()
+                aplicarMargens()
+                v.onApplyWindowInsets(insets)
+            }
         }
         bindService(Intent(this, LeitorService::class.java), conexao, BIND_AUTO_CREATE)
         if (Build.VERSION.SDK_INT >= 33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
