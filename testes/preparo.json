@@ -1,0 +1,1930 @@
+{
+ "dicionario": {
+  "molho": "môlho",
+  "homem": "hõmem",
+  "homens": "hõmens",
+  "wumpus": "uâmpus"
+ },
+ "casos": [
+  {
+   "texto": "WUMPUS 3D · RELATÓRIO DE REFATORAÇÃO",
+   "tipo": "p",
+   "esperado": "Uâmpus 3D, relatório de refatoração."
+  },
+  {
+   "texto": "WUMPUS 3D · RELATÓRIO DE REFATORAÇÃO",
+   "tipo": "h",
+   "esperado": "Uâmpus 3D, relatório de refatoração."
+  },
+  {
+   "texto": "WUMPUS 3D · RELATÓRIO DE REFATORAÇÃO",
+   "tipo": "item",
+   "esperado": "Uâmpus 3D, relatório de refatoração."
+  },
+  {
+   "texto": "Código Limpo",
+   "tipo": "p",
+   "esperado": "Código Limpo."
+  },
+  {
+   "texto": "Código Limpo",
+   "tipo": "h",
+   "esperado": "Código Limpo."
+  },
+  {
+   "texto": "Código Limpo",
+   "tipo": "item",
+   "esperado": "Código Limpo."
+  },
+  {
+   "texto": "O que mudou na organização do código, como foi comprovado que o jogo continua igual e o que se ganhou em leitura, manutenção, memória e repetição.",
+   "tipo": "p",
+   "esperado": "O que mudou na organização do código, como foi comprovado que o jogo continua igual e o que se ganhou em leitura, manutenção, memória e repetição."
+  },
+  {
+   "texto": "O que mudou na organização do código, como foi comprovado que o jogo continua igual e o que se ganhou em leitura, manutenção, memória e repetição.",
+   "tipo": "h",
+   "esperado": "O que mudou na organização do código, como foi comprovado que o jogo continua igual e o que se ganhou em leitura, manutenção, memória e repetição."
+  },
+  {
+   "texto": "O que mudou na organização do código, como foi comprovado que o jogo continua igual e o que se ganhou em leitura, manutenção, memória e repetição.",
+   "tipo": "item",
+   "esperado": "O que mudou na organização do código, como foi comprovado que o jogo continua igual e o que se ganhou em leitura, manutenção, memória e repetição."
+  },
+  {
+   "texto": "Base: commit 8544609 (main)",
+   "tipo": "p",
+   "esperado": "Base: commit 8544609 (main)."
+  },
+  {
+   "texto": "Base: commit 8544609 (main)",
+   "tipo": "h",
+   "esperado": "Base: commit 8544609 (main)."
+  },
+  {
+   "texto": "Base: commit 8544609 (main)",
+   "tipo": "item",
+   "esperado": "Base: commit 8544609 (main)."
+  },
+  {
+   "texto": "Branch: refatoracao",
+   "tipo": "p",
+   "esperado": "Branch: refatoracao."
+  },
+  {
+   "texto": "Branch: refatoracao",
+   "tipo": "h",
+   "esperado": "Branch: refatoracao."
+  },
+  {
+   "texto": "Branch: refatoracao",
+   "tipo": "item",
+   "esperado": "Branch: refatoracao."
+  },
+  {
+   "texto": "Data: 31 de outubro de 2026",
+   "tipo": "p",
+   "esperado": "Data: 31 de outubro de 2026."
+  },
+  {
+   "texto": "Data: 31 de outubro de 2026",
+   "tipo": "h",
+   "esperado": "Data: 31 de outubro de 2026."
+  },
+  {
+   "texto": "Data: 31 de outubro de 2026",
+   "tipo": "item",
+   "esperado": "Data: 31 de outubro de 2026."
+  },
+  {
+   "texto": "Referência: MARTIN, Robert C. Clean Code.",
+   "tipo": "p",
+   "esperado": "Referência: martin, Robert C. Clean Code."
+  },
+  {
+   "texto": "Referência: MARTIN, Robert C. Clean Code.",
+   "tipo": "h",
+   "esperado": "Referência: martin, Robert C. Clean Code."
+  },
+  {
+   "texto": "Referência: MARTIN, Robert C. Clean Code.",
+   "tipo": "item",
+   "esperado": "Referência: martin, Robert C. Clean Code."
+  },
+  {
+   "texto": "Prentice Hall, 2008.",
+   "tipo": "p",
+   "esperado": "Prentice Hall, 2008."
+  },
+  {
+   "texto": "Prentice Hall, 2008.",
+   "tipo": "h",
+   "esperado": "Prentice Hall, 2008."
+  },
+  {
+   "texto": "Prentice Hall, 2008.",
+   "tipo": "item",
+   "esperado": "Prentice Hall, 2008."
+  },
+  {
+   "texto": "Sumário",
+   "tipo": "p",
+   "esperado": "Sumário."
+  },
+  {
+   "texto": "Sumário",
+   "tipo": "h",
+   "esperado": "Sumário."
+  },
+  {
+   "texto": "Sumário",
+   "tipo": "item",
+   "esperado": "Sumário."
+  },
+  {
+   "texto": "1 Resumo",
+   "tipo": "p",
+   "esperado": "1 Resumo."
+  },
+  {
+   "texto": "1 Resumo",
+   "tipo": "h",
+   "esperado": "1. Resumo."
+  },
+  {
+   "texto": "1 Resumo",
+   "tipo": "item",
+   "esperado": "1. Resumo."
+  },
+  {
+   "texto": "2 Princípios aplicados",
+   "tipo": "p",
+   "esperado": "2 Princípios aplicados."
+  },
+  {
+   "texto": "2 Princípios aplicados",
+   "tipo": "h",
+   "esperado": "2. Princípios aplicados."
+  },
+  {
+   "texto": "2 Princípios aplicados",
+   "tipo": "item",
+   "esperado": "2. Princípios aplicados."
+  },
+  {
+   "texto": "3 O que mudou, parte por parte",
+   "tipo": "p",
+   "esperado": "3 O que mudou, parte por parte."
+  },
+  {
+   "texto": "3 O que mudou, parte por parte",
+   "tipo": "h",
+   "esperado": "3. O que mudou, parte por parte."
+  },
+  {
+   "texto": "3 O que mudou, parte por parte",
+   "tipo": "item",
+   "esperado": "3. O que mudou, parte por parte."
+  },
+  {
+   "texto": "4 Como foi comprovado que nada quebrou",
+   "tipo": "p",
+   "esperado": "4 Como foi comprovado que nada quebrou."
+  },
+  {
+   "texto": "4 Como foi comprovado que nada quebrou",
+   "tipo": "h",
+   "esperado": "4. Como foi comprovado que nada quebrou."
+  },
+  {
+   "texto": "4 Como foi comprovado que nada quebrou",
+   "tipo": "item",
+   "esperado": "4. Como foi comprovado que nada quebrou."
+  },
+  {
+   "texto": "5 Benefícios",
+   "tipo": "p",
+   "esperado": "5 Benefícios."
+  },
+  {
+   "texto": "5 Benefícios",
+   "tipo": "h",
+   "esperado": "5. Benefícios."
+  },
+  {
+   "texto": "5 Benefícios",
+   "tipo": "item",
+   "esperado": "5. Benefícios."
+  },
+  {
+   "texto": "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade.",
+   "tipo": "p",
+   "esperado": "O código do Uâmpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade."
+  },
+  {
+   "texto": "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade.",
+   "tipo": "h",
+   "esperado": "O código do Uâmpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade."
+  },
+  {
+   "texto": "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade.",
+   "tipo": "item",
+   "esperado": "O código do Uâmpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade."
+  },
+  {
+   "texto": "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim.",
+   "tipo": "p",
+   "esperado": "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim."
+  },
+  {
+   "texto": "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim.",
+   "tipo": "h",
+   "esperado": "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim."
+  },
+  {
+   "texto": "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim.",
+   "tipo": "item",
+   "esperado": "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim."
+  },
+  {
+   "texto": "A principal motivação foi a dificuldade de manutenção: cada nova funcionalidade exigia alterações em vários arquivos ao mesmo tempo.",
+   "tipo": "p",
+   "esperado": "A principal motivação foi a dificuldade de manutenção: cada nova funcionalidade exigia alterações em vários arquivos ao mesmo tempo."
+  },
+  {
+   "texto": "A principal motivação foi a dificuldade de manutenção: cada nova funcionalidade exigia alterações em vários arquivos ao mesmo tempo.",
+   "tipo": "h",
+   "esperado": "A principal motivação foi a dificuldade de manutenção: cada nova funcionalidade exigia alterações em vários arquivos ao mesmo tempo."
+  },
+  {
+   "texto": "A principal motivação foi a dificuldade de manutenção: cada nova funcionalidade exigia alterações em vários arquivos ao mesmo tempo.",
+   "tipo": "item",
+   "esperado": "A principal motivação foi a dificuldade de manutenção: cada nova funcionalidade exigia alterações em vários arquivos ao mesmo tempo."
+  },
+  {
+   "texto": "Com a reorganização, o tempo médio para implementar uma mudança caiu de forma considerável, segundo as medições da equipe.",
+   "tipo": "p",
+   "esperado": "Com a reorganização, o tempo médio para implementar uma mudança caiu de forma considerável, segundo as medições da equipe."
+  },
+  {
+   "texto": "Com a reorganização, o tempo médio para implementar uma mudança caiu de forma considerável, segundo as medições da equipe.",
+   "tipo": "h",
+   "esperado": "Com a reorganização, o tempo médio para implementar uma mudança caiu de forma considerável, segundo as medições da equipe."
+  },
+  {
+   "texto": "Com a reorganização, o tempo médio para implementar uma mudança caiu de forma considerável, segundo as medições da equipe.",
+   "tipo": "item",
+   "esperado": "Com a reorganização, o tempo médio para implementar uma mudança caiu de forma considerável, segundo as medições da equipe."
+  },
+  {
+   "texto": "Os principais princípios foram:",
+   "tipo": "p",
+   "esperado": "Os principais princípios foram:"
+  },
+  {
+   "texto": "Os principais princípios foram:",
+   "tipo": "h",
+   "esperado": "Os principais princípios foram:"
+  },
+  {
+   "texto": "Os principais princípios foram:",
+   "tipo": "item",
+   "esperado": "Os principais princípios foram:"
+  },
+  {
+   "texto": "Funções pequenas, com no máximo vinte linhas e um único nível de abstração.",
+   "tipo": "p",
+   "esperado": "Funções pequenas, com no máximo vinte linhas e um único nível de abstração."
+  },
+  {
+   "texto": "Funções pequenas, com no máximo vinte linhas e um único nível de abstração.",
+   "tipo": "h",
+   "esperado": "Funções pequenas, com no máximo vinte linhas e um único nível de abstração."
+  },
+  {
+   "texto": "Funções pequenas, com no máximo vinte linhas e um único nível de abstração.",
+   "tipo": "item",
+   "esperado": "Funções pequenas, com no máximo vinte linhas e um único nível de abstração."
+  },
+  {
+   "texto": "Nomes significativos para variáveis, funções e classes",
+   "tipo": "p",
+   "esperado": "Nomes significativos para variáveis, funções e classes."
+  },
+  {
+   "texto": "Nomes significativos para variáveis, funções e classes",
+   "tipo": "h",
+   "esperado": "Nomes significativos para variáveis, funções e classes."
+  },
+  {
+   "texto": "Nomes significativos para variáveis, funções e classes",
+   "tipo": "item",
+   "esperado": "Nomes significativos para variáveis, funções e classes."
+  },
+  {
+   "texto": "Eliminação de código duplicado (princípio DRY)",
+   "tipo": "p",
+   "esperado": "Eliminação de código duplicado (princípio DRY)."
+  },
+  {
+   "texto": "Eliminação de código duplicado (princípio DRY)",
+   "tipo": "h",
+   "esperado": "Eliminação de código duplicado (princípio DRY)."
+  },
+  {
+   "texto": "Eliminação de código duplicado (princípio DRY)",
+   "tipo": "item",
+   "esperado": "Eliminação de código duplicado (princípio DRY)."
+  },
+  {
+   "texto": "2.1 Responsabilidade única",
+   "tipo": "p",
+   "esperado": "2.1 Responsabilidade única."
+  },
+  {
+   "texto": "2.1 Responsabilidade única",
+   "tipo": "h",
+   "esperado": "2.1. Responsabilidade única."
+  },
+  {
+   "texto": "2.1 Responsabilidade única",
+   "tipo": "item",
+   "esperado": "2.1. Responsabilidade única."
+  },
+  {
+   "texto": "Cada classe passou a ter apenas um motivo para mudar.",
+   "tipo": "p",
+   "esperado": "Cada classe passou a ter apenas um motivo para mudar."
+  },
+  {
+   "texto": "Cada classe passou a ter apenas um motivo para mudar.",
+   "tipo": "h",
+   "esperado": "Cada classe passou a ter apenas um motivo para mudar."
+  },
+  {
+   "texto": "Cada classe passou a ter apenas um motivo para mudar.",
+   "tipo": "item",
+   "esperado": "Cada classe passou a ter apenas um motivo para mudar."
+  },
+  {
+   "texto": "O renderizador, por exemplo, não conhece mais as regras do jogo, e o motor de regras não sabe nada sobre a interface gráfica utilizada.",
+   "tipo": "p",
+   "esperado": "O renderizador, por exemplo, não conhece mais as regras do jogo, e o motor de regras não sabe nada sobre a interface gráfica utilizada."
+  },
+  {
+   "texto": "O renderizador, por exemplo, não conhece mais as regras do jogo, e o motor de regras não sabe nada sobre a interface gráfica utilizada.",
+   "tipo": "h",
+   "esperado": "O renderizador, por exemplo, não conhece mais as regras do jogo, e o motor de regras não sabe nada sobre a interface gráfica utilizada."
+  },
+  {
+   "texto": "O renderizador, por exemplo, não conhece mais as regras do jogo, e o motor de regras não sabe nada sobre a interface gráfica utilizada.",
+   "tipo": "item",
+   "esperado": "O renderizador, por exemplo, não conhece mais as regras do jogo, e o motor de regras não sabe nada sobre a interface gráfica utilizada."
+  },
+  {
+   "texto": "1. Medição feita entre agosto e outubro de 2026.",
+   "tipo": "p",
+   "esperado": "1. Medição feita entre agosto e outubro de 2026."
+  },
+  {
+   "texto": "1. Medição feita entre agosto e outubro de 2026.",
+   "tipo": "h",
+   "esperado": "1. Medição feita entre agosto e outubro de 2026."
+  },
+  {
+   "texto": "1. Medição feita entre agosto e outubro de 2026.",
+   "tipo": "item",
+   "esperado": "1. Medição feita entre agosto e outubro de 2026."
+  },
+  {
+   "texto": "Vida e obra de Machado de Assis",
+   "tipo": "p",
+   "esperado": "Vida e obra de Machado de Assis."
+  },
+  {
+   "texto": "Vida e obra de Machado de Assis",
+   "tipo": "h",
+   "esperado": "Vida e obra de Machado de Assis."
+  },
+  {
+   "texto": "Vida e obra de Machado de Assis",
+   "tipo": "item",
+   "esperado": "Vida e obra de Machado de Assis."
+  },
+  {
+   "texto": "Capítulo 1",
+   "tipo": "p",
+   "esperado": "Capítulo 1."
+  },
+  {
+   "texto": "Capítulo 1",
+   "tipo": "h",
+   "esperado": "Capítulo 1."
+  },
+  {
+   "texto": "Capítulo 1",
+   "tipo": "item",
+   "esperado": "Capítulo 1."
+  },
+  {
+   "texto": "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839.",
+   "tipo": "p",
+   "esperado": "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839."
+  },
+  {
+   "texto": "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839.",
+   "tipo": "h",
+   "esperado": "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839."
+  },
+  {
+   "texto": "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839.",
+   "tipo": "item",
+   "esperado": "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839."
+  },
+  {
+   "texto": "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento.",
+   "tipo": "p",
+   "esperado": "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento."
+  },
+  {
+   "texto": "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento.",
+   "tipo": "h",
+   "esperado": "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento."
+  },
+  {
+   "texto": "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento.",
+   "tipo": "item",
+   "esperado": "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento."
+  },
+  {
+   "texto": "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira nº 23 da Academia Brasileira de Letras.",
+   "tipo": "p",
+   "esperado": "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira número 23 da Academia Brasileira de Letras."
+  },
+  {
+   "texto": "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira nº 23 da Academia Brasileira de Letras.",
+   "tipo": "h",
+   "esperado": "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira número 23 da Academia Brasileira de Letras."
+  },
+  {
+   "texto": "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira nº 23 da Academia Brasileira de Letras.",
+   "tipo": "item",
+   "esperado": "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira número 23 da Academia Brasileira de Letras."
+  },
+  {
+   "texto": "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens.",
+   "tipo": "p",
+   "esperado": "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens."
+  },
+  {
+   "texto": "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens.",
+   "tipo": "h",
+   "esperado": "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens."
+  },
+  {
+   "texto": "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens.",
+   "tipo": "item",
+   "esperado": "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens."
+  },
+  {
+   "texto": "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares.",
+   "tipo": "p",
+   "esperado": "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares."
+  },
+  {
+   "texto": "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares.",
+   "tipo": "h",
+   "esperado": "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares."
+  },
+  {
+   "texto": "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares.",
+   "tipo": "item",
+   "esperado": "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares."
+  },
+  {
+   "texto": "Qual seria, afinal, o segredo de sua escrita?",
+   "tipo": "p",
+   "esperado": "Qual seria, afinal, o segredo de sua escrita?"
+  },
+  {
+   "texto": "Qual seria, afinal, o segredo de sua escrita?",
+   "tipo": "h",
+   "esperado": "Qual seria, afinal, o segredo de sua escrita?"
+  },
+  {
+   "texto": "Qual seria, afinal, o segredo de sua escrita?",
+   "tipo": "item",
+   "esperado": "Qual seria, afinal, o segredo de sua escrita?"
+  },
+  {
+   "texto": "Muitos críticos afirmam que é a economia de palavras!",
+   "tipo": "p",
+   "esperado": "Muitos críticos afirmam que é a economia de palavras!"
+  },
+  {
+   "texto": "Muitos críticos afirmam que é a economia de palavras!",
+   "tipo": "h",
+   "esperado": "Muitos críticos afirmam que é a economia de palavras!"
+  },
+  {
+   "texto": "Muitos críticos afirmam que é a economia de palavras!",
+   "tipo": "item",
+   "esperado": "Muitos críticos afirmam que é a economia de palavras!"
+  },
+  {
+   "texto": "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor.",
+   "tipo": "p",
+   "esperado": "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor."
+  },
+  {
+   "texto": "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor.",
+   "tipo": "h",
+   "esperado": "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor."
+  },
+  {
+   "texto": "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor.",
+   "tipo": "item",
+   "esperado": "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor."
+  },
+  {
+   "texto": "Capítulo 2",
+   "tipo": "p",
+   "esperado": "Capítulo 2."
+  },
+  {
+   "texto": "Capítulo 2",
+   "tipo": "h",
+   "esperado": "Capítulo 2."
+  },
+  {
+   "texto": "Capítulo 2",
+   "tipo": "item",
+   "esperado": "Capítulo 2."
+  },
+  {
+   "texto": "Capítulo 3",
+   "tipo": "p",
+   "esperado": "Capítulo 3."
+  },
+  {
+   "texto": "Capítulo 3",
+   "tipo": "h",
+   "esperado": "Capítulo 3."
+  },
+  {
+   "texto": "Capítulo 3",
+   "tipo": "item",
+   "esperado": "Capítulo 3."
+  },
+  {
+   "texto": "Capítulo 4",
+   "tipo": "p",
+   "esperado": "Capítulo 4."
+  },
+  {
+   "texto": "Capítulo 4",
+   "tipo": "h",
+   "esperado": "Capítulo 4."
+  },
+  {
+   "texto": "Capítulo 4",
+   "tipo": "item",
+   "esperado": "Capítulo 4."
+  },
+  {
+   "texto": "Capítulo 5",
+   "tipo": "p",
+   "esperado": "Capítulo 5."
+  },
+  {
+   "texto": "Capítulo 5",
+   "tipo": "h",
+   "esperado": "Capítulo 5."
+  },
+  {
+   "texto": "Capítulo 5",
+   "tipo": "item",
+   "esperado": "Capítulo 5."
+  },
+  {
+   "texto": "Capítulo 6",
+   "tipo": "p",
+   "esperado": "Capítulo 6."
+  },
+  {
+   "texto": "Capítulo 6",
+   "tipo": "h",
+   "esperado": "Capítulo 6."
+  },
+  {
+   "texto": "Capítulo 6",
+   "tipo": "item",
+   "esperado": "Capítulo 6."
+  },
+  {
+   "texto": "O que mudou na organização do código e o que se ganhou em leitura e manutenção.",
+   "tipo": "p",
+   "esperado": "O que mudou na organização do código e o que se ganhou em leitura e manutenção."
+  },
+  {
+   "texto": "O que mudou na organização do código e o que se ganhou em leitura e manutenção.",
+   "tipo": "h",
+   "esperado": "O que mudou na organização do código e o que se ganhou em leitura e manutenção."
+  },
+  {
+   "texto": "O que mudou na organização do código e o que se ganhou em leitura e manutenção.",
+   "tipo": "item",
+   "esperado": "O que mudou na organização do código e o que se ganhou em leitura e manutenção."
+  },
+  {
+   "texto": "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas, nomes claros e nada de repetição.",
+   "tipo": "p",
+   "esperado": "O código do Uâmpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas, nomes claros e nada de repetição."
+  },
+  {
+   "texto": "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas, nomes claros e nada de repetição.",
+   "tipo": "h",
+   "esperado": "O código do Uâmpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas, nomes claros e nada de repetição."
+  },
+  {
+   "texto": "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas, nomes claros e nada de repetição.",
+   "tipo": "item",
+   "esperado": "O código do Uâmpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas, nomes claros e nada de repetição."
+  },
+  {
+   "texto": "Nenhuma regra do jogo foi alterada.",
+   "tipo": "p",
+   "esperado": "Nenhuma regra do jogo foi alterada."
+  },
+  {
+   "texto": "Nenhuma regra do jogo foi alterada.",
+   "tipo": "h",
+   "esperado": "Nenhuma regra do jogo foi alterada."
+  },
+  {
+   "texto": "Nenhuma regra do jogo foi alterada.",
+   "tipo": "item",
+   "esperado": "Nenhuma regra do jogo foi alterada."
+  },
+  {
+   "texto": "A primeira linha termina aqui, e continua depois de uma quebra de linha manual.",
+   "tipo": "p",
+   "esperado": "A primeira linha termina aqui, e continua depois de uma quebra de linha manual."
+  },
+  {
+   "texto": "A primeira linha termina aqui, e continua depois de uma quebra de linha manual.",
+   "tipo": "h",
+   "esperado": "A primeira linha termina aqui, e continua depois de uma quebra de linha manual."
+  },
+  {
+   "texto": "A primeira linha termina aqui, e continua depois de uma quebra de linha manual.",
+   "tipo": "item",
+   "esperado": "A primeira linha termina aqui, e continua depois de uma quebra de linha manual."
+  },
+  {
+   "texto": "Funções pequenas, com no máximo vinte linhas",
+   "tipo": "p",
+   "esperado": "Funções pequenas, com no máximo vinte linhas."
+  },
+  {
+   "texto": "Funções pequenas, com no máximo vinte linhas",
+   "tipo": "h",
+   "esperado": "Funções pequenas, com no máximo vinte linhas."
+  },
+  {
+   "texto": "Funções pequenas, com no máximo vinte linhas",
+   "tipo": "item",
+   "esperado": "Funções pequenas, com no máximo vinte linhas."
+  },
+  {
+   "texto": "Nomes significativos para variáveis e classes",
+   "tipo": "p",
+   "esperado": "Nomes significativos para variáveis e classes."
+  },
+  {
+   "texto": "Nomes significativos para variáveis e classes",
+   "tipo": "h",
+   "esperado": "Nomes significativos para variáveis e classes."
+  },
+  {
+   "texto": "Nomes significativos para variáveis e classes",
+   "tipo": "item",
+   "esperado": "Nomes significativos para variáveis e classes."
+  },
+  {
+   "texto": "Eliminação de código duplicado",
+   "tipo": "p",
+   "esperado": "Eliminação de código duplicado."
+  },
+  {
+   "texto": "Eliminação de código duplicado",
+   "tipo": "h",
+   "esperado": "Eliminação de código duplicado."
+  },
+  {
+   "texto": "Eliminação de código duplicado",
+   "tipo": "item",
+   "esperado": "Eliminação de código duplicado."
+  },
+  {
+   "texto": "Separar o renderizador das regras",
+   "tipo": "p",
+   "esperado": "Separar o renderizador das regras."
+  },
+  {
+   "texto": "Separar o renderizador das regras",
+   "tipo": "h",
+   "esperado": "Separar o renderizador das regras."
+  },
+  {
+   "texto": "Separar o renderizador das regras",
+   "tipo": "item",
+   "esperado": "Separar o renderizador das regras."
+  },
+  {
+   "texto": "Isolar o motor de áudio",
+   "tipo": "p",
+   "esperado": "Isolar o motor de áudio."
+  },
+  {
+   "texto": "Isolar o motor de áudio",
+   "tipo": "h",
+   "esperado": "Isolar o motor de áudio."
+  },
+  {
+   "texto": "Isolar o motor de áudio",
+   "tipo": "item",
+   "esperado": "Isolar o motor de áudio."
+  },
+  {
+   "texto": "Resultados medidos",
+   "tipo": "p",
+   "esperado": "Resultados medidos."
+  },
+  {
+   "texto": "Resultados medidos",
+   "tipo": "h",
+   "esperado": "Resultados medidos."
+  },
+  {
+   "texto": "Resultados medidos",
+   "tipo": "item",
+   "esperado": "Resultados medidos."
+  },
+  {
+   "texto": "Métrica: Valor",
+   "tipo": "p",
+   "esperado": "Métrica: Valor."
+  },
+  {
+   "texto": "Métrica: Valor",
+   "tipo": "h",
+   "esperado": "Métrica: Valor."
+  },
+  {
+   "texto": "Métrica: Valor",
+   "tipo": "item",
+   "esperado": "Métrica: Valor."
+  },
+  {
+   "texto": "Linhas por função: 12 em média",
+   "tipo": "p",
+   "esperado": "Linhas por função: 12 em média."
+  },
+  {
+   "texto": "Linhas por função: 12 em média",
+   "tipo": "h",
+   "esperado": "Linhas por função: 12 em média."
+  },
+  {
+   "texto": "Linhas por função: 12 em média",
+   "tipo": "item",
+   "esperado": "Linhas por função: 12 em média."
+  },
+  {
+   "texto": "Duplicação: caiu 40%",
+   "tipo": "p",
+   "esperado": "Duplicação: caiu 40%."
+  },
+  {
+   "texto": "Duplicação: caiu 40%",
+   "tipo": "h",
+   "esperado": "Duplicação: caiu 40%."
+  },
+  {
+   "texto": "Duplicação: caiu 40%",
+   "tipo": "item",
+   "esperado": "Duplicação: caiu 40%."
+  },
+  {
+   "texto": "Como disse o autor, “código limpo é simples e direto”.",
+   "tipo": "p",
+   "esperado": "Como disse o autor, “código limpo é simples e direto”."
+  },
+  {
+   "texto": "Como disse o autor, “código limpo é simples e direto”.",
+   "tipo": "h",
+   "esperado": "Como disse o autor, “código limpo é simples e direto”."
+  },
+  {
+   "texto": "Como disse o autor, “código limpo é simples e direto”.",
+   "tipo": "item",
+   "esperado": "Como disse o autor, “código limpo é simples e direto”."
+  },
+  {
+   "texto": "Fim do relatório.",
+   "tipo": "p",
+   "esperado": "Fim do relatório."
+  },
+  {
+   "texto": "Fim do relatório.",
+   "tipo": "h",
+   "esperado": "Fim do relatório."
+  },
+  {
+   "texto": "Fim do relatório.",
+   "tipo": "item",
+   "esperado": "Fim do relatório."
+  },
+  {
+   "texto": "Word Document",
+   "tipo": "p",
+   "esperado": "Word Document."
+  },
+  {
+   "texto": "Word Document",
+   "tipo": "h",
+   "esperado": "Word Document."
+  },
+  {
+   "texto": "Word Document",
+   "tipo": "item",
+   "esperado": "Word Document."
+  },
+  {
+   "texto": "Heading Level 1",
+   "tipo": "p",
+   "esperado": "Heading Level 1."
+  },
+  {
+   "texto": "Heading Level 1",
+   "tipo": "h",
+   "esperado": "Heading Level 1."
+  },
+  {
+   "texto": "Heading Level 1",
+   "tipo": "item",
+   "esperado": "Heading Level 1."
+  },
+  {
+   "texto": "This document has different lists in it for testing",
+   "tipo": "p",
+   "esperado": "This document has different lists in it for testing."
+  },
+  {
+   "texto": "This document has different lists in it for testing",
+   "tipo": "h",
+   "esperado": "This document has different lists in it for testing."
+  },
+  {
+   "texto": "This document has different lists in it for testing",
+   "tipo": "item",
+   "esperado": "This document has different lists in it for testing."
+  },
+  {
+   "texto": "Unordered list 1",
+   "tipo": "p",
+   "esperado": "Unordered list 1."
+  },
+  {
+   "texto": "Unordered list 1",
+   "tipo": "h",
+   "esperado": "Unordered list 1."
+  },
+  {
+   "texto": "Unordered list 1",
+   "tipo": "item",
+   "esperado": "Unordered list 1."
+  },
+  {
+   "texto": "UL 2",
+   "tipo": "p",
+   "esperado": "UL 2."
+  },
+  {
+   "texto": "UL 2",
+   "tipo": "h",
+   "esperado": "UL 2."
+  },
+  {
+   "texto": "UL 2",
+   "tipo": "item",
+   "esperado": "UL 2."
+  },
+  {
+   "texto": "UL 3",
+   "tipo": "p",
+   "esperado": "UL 3."
+  },
+  {
+   "texto": "UL 3",
+   "tipo": "h",
+   "esperado": "UL 3."
+  },
+  {
+   "texto": "UL 3",
+   "tipo": "item",
+   "esperado": "UL 3."
+  },
+  {
+   "texto": "Next up is an ordered list:",
+   "tipo": "p",
+   "esperado": "Next up is an ordered list:"
+  },
+  {
+   "texto": "Next up is an ordered list:",
+   "tipo": "h",
+   "esperado": "Next up is an ordered list:"
+  },
+  {
+   "texto": "Next up is an ordered list:",
+   "tipo": "item",
+   "esperado": "Next up is an ordered list:"
+  },
+  {
+   "texto": "Ordered list 1",
+   "tipo": "p",
+   "esperado": "Ordered list 1."
+  },
+  {
+   "texto": "Ordered list 1",
+   "tipo": "h",
+   "esperado": "Ordered list 1."
+  },
+  {
+   "texto": "Ordered list 1",
+   "tipo": "item",
+   "esperado": "Ordered list 1."
+  },
+  {
+   "texto": "OL 2",
+   "tipo": "p",
+   "esperado": "OL 2."
+  },
+  {
+   "texto": "OL 2",
+   "tipo": "h",
+   "esperado": "OL 2."
+  },
+  {
+   "texto": "OL 2",
+   "tipo": "item",
+   "esperado": "OL 2."
+  },
+  {
+   "texto": "OL 3",
+   "tipo": "p",
+   "esperado": "OL 3."
+  },
+  {
+   "texto": "OL 3",
+   "tipo": "h",
+   "esperado": "OL 3."
+  },
+  {
+   "texto": "OL 3",
+   "tipo": "item",
+   "esperado": "OL 3."
+  },
+  {
+   "texto": "Now for an un-ordered list with a different bullet style:",
+   "tipo": "p",
+   "esperado": "Now for an un-ordered list with a different bullet style:"
+  },
+  {
+   "texto": "Now for an un-ordered list with a different bullet style:",
+   "tipo": "h",
+   "esperado": "Now for an un-ordered list with a different bullet style:"
+  },
+  {
+   "texto": "Now for an un-ordered list with a different bullet style:",
+   "tipo": "item",
+   "esperado": "Now for an un-ordered list with a different bullet style:"
+  },
+  {
+   "texto": "Tick 1",
+   "tipo": "p",
+   "esperado": "Tick 1."
+  },
+  {
+   "texto": "Tick 1",
+   "tipo": "h",
+   "esperado": "Tick 1."
+  },
+  {
+   "texto": "Tick 1",
+   "tipo": "item",
+   "esperado": "Tick 1."
+  },
+  {
+   "texto": "Tick 2",
+   "tipo": "p",
+   "esperado": "Tick 2."
+  },
+  {
+   "texto": "Tick 2",
+   "tipo": "h",
+   "esperado": "Tick 2."
+  },
+  {
+   "texto": "Tick 2",
+   "tipo": "item",
+   "esperado": "Tick 2."
+  },
+  {
+   "texto": "Multi-level un-ordered list:",
+   "tipo": "p",
+   "esperado": "Multi-level un-ordered list:"
+  },
+  {
+   "texto": "Multi-level un-ordered list:",
+   "tipo": "h",
+   "esperado": "Multi-level un-ordered list:"
+  },
+  {
+   "texto": "Multi-level un-ordered list:",
+   "tipo": "item",
+   "esperado": "Multi-level un-ordered list:"
+  },
+  {
+   "texto": "ML 1:1",
+   "tipo": "p",
+   "esperado": "ML 1:1."
+  },
+  {
+   "texto": "ML 1:1",
+   "tipo": "h",
+   "esperado": "ML 1:1."
+  },
+  {
+   "texto": "ML 1:1",
+   "tipo": "item",
+   "esperado": "ML 1:1."
+  },
+  {
+   "texto": "ML 1:2",
+   "tipo": "p",
+   "esperado": "ML 1:2."
+  },
+  {
+   "texto": "ML 1:2",
+   "tipo": "h",
+   "esperado": "ML 1:2."
+  },
+  {
+   "texto": "ML 1:2",
+   "tipo": "item",
+   "esperado": "ML 1:2."
+  },
+  {
+   "texto": "ML 2:1",
+   "tipo": "p",
+   "esperado": "ML 2:1."
+  },
+  {
+   "texto": "ML 2:1",
+   "tipo": "h",
+   "esperado": "ML 2:1."
+  },
+  {
+   "texto": "ML 2:1",
+   "tipo": "item",
+   "esperado": "ML 2:1."
+  },
+  {
+   "texto": "ML 2:2",
+   "tipo": "p",
+   "esperado": "ML 2:2."
+  },
+  {
+   "texto": "ML 2:2",
+   "tipo": "h",
+   "esperado": "ML 2:2."
+  },
+  {
+   "texto": "ML 2:2",
+   "tipo": "item",
+   "esperado": "ML 2:2."
+  },
+  {
+   "texto": "ML 2:3",
+   "tipo": "p",
+   "esperado": "ML 2:3."
+  },
+  {
+   "texto": "ML 2:3",
+   "tipo": "h",
+   "esperado": "ML 2:3."
+  },
+  {
+   "texto": "ML 2:3",
+   "tipo": "item",
+   "esperado": "ML 2:3."
+  },
+  {
+   "texto": "ML 3:1",
+   "tipo": "p",
+   "esperado": "ML 3:1."
+  },
+  {
+   "texto": "ML 3:1",
+   "tipo": "h",
+   "esperado": "ML 3:1."
+  },
+  {
+   "texto": "ML 3:1",
+   "tipo": "item",
+   "esperado": "ML 3:1."
+  },
+  {
+   "texto": "ML 4:1",
+   "tipo": "p",
+   "esperado": "ML 4:1."
+  },
+  {
+   "texto": "ML 4:1",
+   "tipo": "h",
+   "esperado": "ML 4:1."
+  },
+  {
+   "texto": "ML 4:1",
+   "tipo": "item",
+   "esperado": "ML 4:1."
+  },
+  {
+   "texto": "ML 5:1",
+   "tipo": "p",
+   "esperado": "ML 5:1."
+  },
+  {
+   "texto": "ML 5:1",
+   "tipo": "h",
+   "esperado": "ML 5:1."
+  },
+  {
+   "texto": "ML 5:1",
+   "tipo": "item",
+   "esperado": "ML 5:1."
+  },
+  {
+   "texto": "ML 5:2",
+   "tipo": "p",
+   "esperado": "ML 5:2."
+  },
+  {
+   "texto": "ML 5:2",
+   "tipo": "h",
+   "esperado": "ML 5:2."
+  },
+  {
+   "texto": "ML 5:2",
+   "tipo": "item",
+   "esperado": "ML 5:2."
+  },
+  {
+   "texto": "ML 2:4",
+   "tipo": "p",
+   "esperado": "ML 2:4."
+  },
+  {
+   "texto": "ML 2:4",
+   "tipo": "h",
+   "esperado": "ML 2:4."
+  },
+  {
+   "texto": "ML 2:4",
+   "tipo": "item",
+   "esperado": "ML 2:4."
+  },
+  {
+   "texto": "ML 1:3",
+   "tipo": "p",
+   "esperado": "ML 1:3."
+  },
+  {
+   "texto": "ML 1:3",
+   "tipo": "h",
+   "esperado": "ML 1:3."
+  },
+  {
+   "texto": "ML 1:3",
+   "tipo": "item",
+   "esperado": "ML 1:3."
+  },
+  {
+   "texto": "Multi-level ordered list:",
+   "tipo": "p",
+   "esperado": "Multi-level ordered list:"
+  },
+  {
+   "texto": "Multi-level ordered list:",
+   "tipo": "h",
+   "esperado": "Multi-level ordered list:"
+  },
+  {
+   "texto": "Multi-level ordered list:",
+   "tipo": "item",
+   "esperado": "Multi-level ordered list:"
+  },
+  {
+   "texto": "OL 1",
+   "tipo": "p",
+   "esperado": "OL 1."
+  },
+  {
+   "texto": "OL 1",
+   "tipo": "h",
+   "esperado": "OL 1."
+  },
+  {
+   "texto": "OL 1",
+   "tipo": "item",
+   "esperado": "OL 1."
+  },
+  {
+   "texto": "OL 2.1",
+   "tipo": "p",
+   "esperado": "OL 2.1."
+  },
+  {
+   "texto": "OL 2.1",
+   "tipo": "h",
+   "esperado": "OL 2.1."
+  },
+  {
+   "texto": "OL 2.1",
+   "tipo": "item",
+   "esperado": "OL 2.1."
+  },
+  {
+   "texto": "OL 2.2",
+   "tipo": "p",
+   "esperado": "OL 2.2."
+  },
+  {
+   "texto": "OL 2.2",
+   "tipo": "h",
+   "esperado": "OL 2.2."
+  },
+  {
+   "texto": "OL 2.2",
+   "tipo": "item",
+   "esperado": "OL 2.2."
+  },
+  {
+   "texto": "OL 2.2.1",
+   "tipo": "p",
+   "esperado": "OL 2.2.1."
+  },
+  {
+   "texto": "OL 2.2.1",
+   "tipo": "h",
+   "esperado": "OL 2.2.1."
+  },
+  {
+   "texto": "OL 2.2.1",
+   "tipo": "item",
+   "esperado": "OL 2.2.1."
+  },
+  {
+   "texto": "OL 2.2.2",
+   "tipo": "p",
+   "esperado": "OL 2.2.2."
+  },
+  {
+   "texto": "OL 2.2.2",
+   "tipo": "h",
+   "esperado": "OL 2.2.2."
+  },
+  {
+   "texto": "OL 2.2.2",
+   "tipo": "item",
+   "esperado": "OL 2.2.2."
+  },
+  {
+   "texto": "OL 2.2.2.1",
+   "tipo": "p",
+   "esperado": "OL 2.2.2.1."
+  },
+  {
+   "texto": "OL 2.2.2.1",
+   "tipo": "h",
+   "esperado": "OL 2.2.2.1."
+  },
+  {
+   "texto": "OL 2.2.2.1",
+   "tipo": "item",
+   "esperado": "OL 2.2.2.1."
+  },
+  {
+   "texto": "OL 2.2.3",
+   "tipo": "p",
+   "esperado": "OL 2.2.3."
+  },
+  {
+   "texto": "OL 2.2.3",
+   "tipo": "h",
+   "esperado": "OL 2.2.3."
+  },
+  {
+   "texto": "OL 2.2.3",
+   "tipo": "item",
+   "esperado": "OL 2.2.3."
+  },
+  {
+   "texto": "Finally we want some indents, to tell the difference",
+   "tipo": "p",
+   "esperado": "Finally we want some indents, to tell the difference."
+  },
+  {
+   "texto": "Finally we want some indents, to tell the difference",
+   "tipo": "h",
+   "esperado": "Finally we want some indents, to tell the difference."
+  },
+  {
+   "texto": "Finally we want some indents, to tell the difference",
+   "tipo": "item",
+   "esperado": "Finally we want some indents, to tell the difference."
+  },
+  {
+   "texto": "Indented once",
+   "tipo": "p",
+   "esperado": "Indented once."
+  },
+  {
+   "texto": "Indented once",
+   "tipo": "h",
+   "esperado": "Indented once."
+  },
+  {
+   "texto": "Indented once",
+   "tipo": "item",
+   "esperado": "Indented once."
+  },
+  {
+   "texto": "Indented twice",
+   "tipo": "p",
+   "esperado": "Indented twice."
+  },
+  {
+   "texto": "Indented twice",
+   "tipo": "h",
+   "esperado": "Indented twice."
+  },
+  {
+   "texto": "Indented twice",
+   "tipo": "item",
+   "esperado": "Indented twice."
+  },
+  {
+   "texto": "Indented three times",
+   "tipo": "p",
+   "esperado": "Indented three times."
+  },
+  {
+   "texto": "Indented three times",
+   "tipo": "h",
+   "esperado": "Indented three times."
+  },
+  {
+   "texto": "Indented three times",
+   "tipo": "item",
+   "esperado": "Indented three times."
+  },
+  {
+   "texto": "The end!",
+   "tipo": "p",
+   "esperado": "The end!"
+  },
+  {
+   "texto": "The end!",
+   "tipo": "h",
+   "esperado": "The end!"
+  },
+  {
+   "texto": "The end!",
+   "tipo": "item",
+   "esperado": "The end!"
+  },
+  {
+   "texto": "Olá, mundo!",
+   "tipo": "p",
+   "esperado": "Olá, mundo!"
+  },
+  {
+   "texto": "Olá, mundo!",
+   "tipo": "h",
+   "esperado": "Olá, mundo!"
+  },
+  {
+   "texto": "Olá, mundo!",
+   "tipo": "item",
+   "esperado": "Olá, mundo!"
+  },
+  {
+   "texto": "O jogo (versão 3D) foi feito: rápido; bem feito, sem pressa — com calma… e pronto.",
+   "tipo": "p",
+   "esperado": "O jogo (versão 3D) foi feito: rápido; bem feito, sem pressa — com calma… e pronto."
+  },
+  {
+   "texto": "O jogo (versão 3D) foi feito: rápido; bem feito, sem pressa — com calma… e pronto.",
+   "tipo": "h",
+   "esperado": "O jogo (versão 3D) foi feito: rápido; bem feito, sem pressa — com calma… e pronto."
+  },
+  {
+   "texto": "O jogo (versão 3D) foi feito: rápido; bem feito, sem pressa — com calma… e pronto.",
+   "tipo": "item",
+   "esperado": "O jogo (versão 3D) foi feito: rápido; bem feito, sem pressa — com calma… e pronto."
+  },
+  {
+   "texto": "Custou R$ 9,43 em 10.000 unidades, às 10:30 de 31/10/2026.",
+   "tipo": "p",
+   "esperado": "Custou R$ 9,43 em 10.000 unidades, às 10:30 de 31/10/2026."
+  },
+  {
+   "texto": "Custou R$ 9,43 em 10.000 unidades, às 10:30 de 31/10/2026.",
+   "tipo": "h",
+   "esperado": "Custou R$ 9,43 em 10.000 unidades, às 10:30 de 31/10/2026."
+  },
+  {
+   "texto": "Custou R$ 9,43 em 10.000 unidades, às 10:30 de 31/10/2026.",
+   "tipo": "item",
+   "esperado": "Custou R$ 9,43 em 10.000 unidades, às 10:30 de 31/10/2026."
+  },
+  {
+   "texto": "Será que o senhor vem amanhã? Sim!",
+   "tipo": "p",
+   "esperado": "Será que o senhor vem amanhã? Sim!"
+  },
+  {
+   "texto": "Será que o senhor vem amanhã? Sim!",
+   "tipo": "h",
+   "esperado": "Será que o senhor vem amanhã? Sim!"
+  },
+  {
+   "texto": "Será que o senhor vem amanhã? Sim!",
+   "tipo": "item",
+   "esperado": "Será que o senhor vem amanhã? Sim!"
+  },
+  {
+   "texto": "«Citação» e “aspas” e \"retas\" e [colchetes] e {chaves}.",
+   "tipo": "p",
+   "esperado": "«Citação» e “aspas” e \"retas\" e [colchetes] e chaves ."
+  },
+  {
+   "texto": "«Citação» e “aspas” e \"retas\" e [colchetes] e {chaves}.",
+   "tipo": "h",
+   "esperado": "«Citação» e “aspas” e \"retas\" e [colchetes] e chaves ."
+  },
+  {
+   "texto": "«Citação» e “aspas” e \"retas\" e [colchetes] e {chaves}.",
+   "tipo": "item",
+   "esperado": "«Citação» e “aspas” e \"retas\" e [colchetes] e chaves ."
+  },
+  {
+   "texto": "Ele disse: — Não! — e saiu...",
+   "tipo": "p",
+   "esperado": "Ele disse: — Não! — e saiu..."
+  },
+  {
+   "texto": "Ele disse: — Não! — e saiu...",
+   "tipo": "h",
+   "esperado": "Ele disse: — Não! — e saiu..."
+  },
+  {
+   "texto": "Ele disse: — Não! — e saiu...",
+   "tipo": "item",
+   "esperado": "Ele disse: — Não! — e saiu..."
+  },
+  {
+   "texto": "O trabalho rendeu milhões à família, e o filho ficou melhor.",
+   "tipo": "p",
+   "esperado": "O trabalho rendeu milhões à família, e o filho ficou melhor."
+  },
+  {
+   "texto": "O trabalho rendeu milhões à família, e o filho ficou melhor.",
+   "tipo": "h",
+   "esperado": "O trabalho rendeu milhões à família, e o filho ficou melhor."
+  },
+  {
+   "texto": "O trabalho rendeu milhões à família, e o filho ficou melhor.",
+   "tipo": "item",
+   "esperado": "O trabalho rendeu milhões à família, e o filho ficou melhor."
+  },
+  {
+   "texto": "Sr. Silva, Dra. Ana e o Prof. João.",
+   "tipo": "p",
+   "esperado": "Sr. Silva, Dra. Ana e o Prof. João."
+  },
+  {
+   "texto": "Sr. Silva, Dra. Ana e o Prof. João.",
+   "tipo": "h",
+   "esperado": "Sr. Silva, Dra. Ana e o Prof. João."
+  },
+  {
+   "texto": "Sr. Silva, Dra. Ana e o Prof. João.",
+   "tipo": "item",
+   "esperado": "Sr. Silva, Dra. Ana e o Prof. João."
+  },
+  {
+   "texto": "A API do PDF usa JSON e HTML5.",
+   "tipo": "p",
+   "esperado": "A API do PDF usa JSON e HTML5."
+  },
+  {
+   "texto": "A API do PDF usa JSON e HTML5.",
+   "tipo": "h",
+   "esperado": "A API do PDF usa JSON e HTML5."
+  },
+  {
+   "texto": "A API do PDF usa JSON e HTML5.",
+   "tipo": "item",
+   "esperado": "A API do PDF usa JSON e HTML5."
+  },
+  {
+   "texto": "ISBN 978-0-13-235088-4.",
+   "tipo": "p",
+   "esperado": "Isbn 978-0-13-235088-4."
+  },
+  {
+   "texto": "ISBN 978-0-13-235088-4.",
+   "tipo": "h",
+   "esperado": "Isbn 978-0-13-235088-4."
+  },
+  {
+   "texto": "ISBN 978-0-13-235088-4.",
+   "tipo": "item",
+   "esperado": "Isbn 978-0-13-235088-4."
+  },
+  {
+   "texto": "3,5% de 1.234,56 é pouco.",
+   "tipo": "p",
+   "esperado": "3,5% de 1.234,56 é pouco."
+  },
+  {
+   "texto": "3,5% de 1.234,56 é pouco.",
+   "tipo": "h",
+   "esperado": "3,5% de 1.234,56 é pouco."
+  },
+  {
+   "texto": "3,5% de 1.234,56 é pouco.",
+   "tipo": "item",
+   "esperado": "3,5% de 1.234,56 é pouco."
+  },
+  {
+   "texto": "...",
+   "tipo": "p",
+   "esperado": "..."
+  },
+  {
+   "texto": "...",
+   "tipo": "h",
+   "esperado": "..."
+  },
+  {
+   "texto": "...",
+   "tipo": "item",
+   "esperado": "..."
+  },
+  {
+   "texto": "—",
+   "tipo": "p",
+   "esperado": "—."
+  },
+  {
+   "texto": "—",
+   "tipo": "h",
+   "esperado": "—."
+  },
+  {
+   "texto": "—",
+   "tipo": "item",
+   "esperado": "—."
+  },
+  {
+   "texto": "(",
+   "tipo": "p",
+   "esperado": "(."
+  },
+  {
+   "texto": "(",
+   "tipo": "h",
+   "esperado": "(."
+  },
+  {
+   "texto": "(",
+   "tipo": "item",
+   "esperado": "(."
+  },
+  {
+   "texto": "Fim",
+   "tipo": "p",
+   "esperado": "Fim."
+  },
+  {
+   "texto": "Fim",
+   "tipo": "h",
+   "esperado": "Fim."
+  },
+  {
+   "texto": "Fim",
+   "tipo": "item",
+   "esperado": "Fim."
+  },
+  {
+   "texto": "Uma frase muito longa, com várias vírgulas, que serve para testar, entre outras coisas, a preservação da pontuação; e mais: dois-pontos!",
+   "tipo": "p",
+   "esperado": "Uma frase muito longa, com várias vírgulas, que serve para testar, entre outras coisas, a preservação da pontuação; e mais: dois-pontos!"
+  },
+  {
+   "texto": "Uma frase muito longa, com várias vírgulas, que serve para testar, entre outras coisas, a preservação da pontuação; e mais: dois-pontos!",
+   "tipo": "h",
+   "esperado": "Uma frase muito longa, com várias vírgulas, que serve para testar, entre outras coisas, a preservação da pontuação; e mais: dois-pontos!"
+  },
+  {
+   "texto": "Uma frase muito longa, com várias vírgulas, que serve para testar, entre outras coisas, a preservação da pontuação; e mais: dois-pontos!",
+   "tipo": "item",
+   "esperado": "Uma frase muito longa, com várias vírgulas, que serve para testar, entre outras coisas, a preservação da pontuação; e mais: dois-pontos!"
+  },
+  {
+   "texto": "e-mail, guarda-chuva, bem-vindo e pé-de-moleque.",
+   "tipo": "p",
+   "esperado": "E-mail, guarda-chuva, bem-vindo e pé-de-moleque."
+  },
+  {
+   "texto": "e-mail, guarda-chuva, bem-vindo e pé-de-moleque.",
+   "tipo": "h",
+   "esperado": "E-mail, guarda-chuva, bem-vindo e pé-de-moleque."
+  },
+  {
+   "texto": "e-mail, guarda-chuva, bem-vindo e pé-de-moleque.",
+   "tipo": "item",
+   "esperado": "E-mail, guarda-chuva, bem-vindo e pé-de-moleque."
+  },
+  {
+   "texto": "Pneu, psicologia, advogado, ritmo e subsolo.",
+   "tipo": "p",
+   "esperado": "Pneu, psicologia, advogado, ritmo e subsolo."
+  },
+  {
+   "texto": "Pneu, psicologia, advogado, ritmo e subsolo.",
+   "tipo": "h",
+   "esperado": "Pneu, psicologia, advogado, ritmo e subsolo."
+  },
+  {
+   "texto": "Pneu, psicologia, advogado, ritmo e subsolo.",
+   "tipo": "item",
+   "esperado": "Pneu, psicologia, advogado, ritmo e subsolo."
+  },
+  {
+   "texto": "Brasil, Portugal, Moçambique e Angola falam português.",
+   "tipo": "p",
+   "esperado": "Brasil, Portugal, Moçambique e Angola falam português."
+  },
+  {
+   "texto": "Brasil, Portugal, Moçambique e Angola falam português.",
+   "tipo": "h",
+   "esperado": "Brasil, Portugal, Moçambique e Angola falam português."
+  },
+  {
+   "texto": "Brasil, Portugal, Moçambique e Angola falam português.",
+   "tipo": "item",
+   "esperado": "Brasil, Portugal, Moçambique e Angola falam português."
+  },
+  {
+   "texto": "¿Qué? ¡Hola!",
+   "tipo": "p",
+   "esperado": "¿Qué? ¡Hola!"
+  },
+  {
+   "texto": "¿Qué? ¡Hola!",
+   "tipo": "h",
+   "esperado": "¿Qué? ¡Hola!"
+  },
+  {
+   "texto": "¿Qué? ¡Hola!",
+   "tipo": "item",
+   "esperado": "¿Qué? ¡Hola!"
+  },
+  {
+   "texto": "Nº 23, art. 5º, § 2º.",
+   "tipo": "p",
+   "esperado": "Nº 23, art. 5º, parágrafo 2º."
+  },
+  {
+   "texto": "Nº 23, art. 5º, § 2º.",
+   "tipo": "h",
+   "esperado": "Nº 23, art. 5º, parágrafo 2º."
+  },
+  {
+   "texto": "Nº 23, art. 5º, § 2º.",
+   "tipo": "item",
+   "esperado": "Nº 23, art. 5º, parágrafo 2º."
+  },
+  {
+   "texto": "Dois  espaços   e\ttabulação.",
+   "tipo": "p",
+   "esperado": "Dois espaços e tabulação."
+  },
+  {
+   "texto": "Dois  espaços   e\ttabulação.",
+   "tipo": "h",
+   "esperado": "Dois espaços e tabulação."
+  },
+  {
+   "texto": "Dois  espaços   e\ttabulação.",
+   "tipo": "item",
+   "esperado": "Dois espaços e tabulação."
+  },
+  {
+   "texto": "veja https://site.com/a e www.x.org ou mail@x.com.br",
+   "tipo": "p",
+   "esperado": "Veja link e link ou e-mail."
+  },
+  {
+   "texto": "veja https://site.com/a e www.x.org ou mail@x.com.br",
+   "tipo": "h",
+   "esperado": "Veja link e link ou e-mail."
+  },
+  {
+   "texto": "veja https://site.com/a e www.x.org ou mail@x.com.br",
+   "tipo": "item",
+   "esperado": "Veja link e link ou e-mail."
+  },
+  {
+   "texto": "Ref [12] e [3,4] & cia",
+   "tipo": "p",
+   "esperado": "Ref e e cia."
+  },
+  {
+   "texto": "Ref [12] e [3,4] & cia",
+   "tipo": "h",
+   "esperado": "Ref e e cia."
+  },
+  {
+   "texto": "Ref [12] e [3,4] & cia",
+   "tipo": "item",
+   "esperado": "Ref e e cia."
+  },
+  {
+   "texto": "1 Resumo",
+   "tipo": "p",
+   "esperado": "1 Resumo."
+  },
+  {
+   "texto": "1 Resumo",
+   "tipo": "h",
+   "esperado": "1. Resumo."
+  },
+  {
+   "texto": "1 Resumo",
+   "tipo": "item",
+   "esperado": "1. Resumo."
+  },
+  {
+   "texto": "2.1. Princípios",
+   "tipo": "p",
+   "esperado": "2.1. Princípios."
+  },
+  {
+   "texto": "2.1. Princípios",
+   "tipo": "h",
+   "esperado": "2.1. Princípios."
+  },
+  {
+   "texto": "2.1. Princípios",
+   "tipo": "item",
+   "esperado": "2.1. Princípios."
+  },
+  {
+   "texto": "a) item",
+   "tipo": "p",
+   "esperado": "A) item."
+  },
+  {
+   "texto": "a) item",
+   "tipo": "h",
+   "esperado": "A) item."
+  },
+  {
+   "texto": "a) item",
+   "tipo": "item",
+   "esperado": "A) item."
+  },
+  {
+   "texto": "PROJETO DE LEI DO SENADO",
+   "tipo": "p",
+   "esperado": "Projeto de lei do senado."
+  },
+  {
+   "texto": "PROJETO DE LEI DO SENADO",
+   "tipo": "h",
+   "esperado": "Projeto de lei do senado."
+  },
+  {
+   "texto": "PROJETO DE LEI DO SENADO",
+   "tipo": "item",
+   "esperado": "Projeto de lei do senado."
+  },
+  {
+   "texto": "O CPF e a ONU",
+   "tipo": "p",
+   "esperado": "O CPF e a ONU."
+  },
+  {
+   "texto": "O CPF e a ONU",
+   "tipo": "h",
+   "esperado": "O CPF e a ONU."
+  },
+  {
+   "texto": "O CPF e a ONU",
+   "tipo": "item",
+   "esperado": "O CPF e a ONU."
+  },
+  {
+   "texto": "Texto com __sublinhado__ e *asterisco* e <tag>",
+   "tipo": "p",
+   "esperado": "Texto com sublinhado e asterisco e tag."
+  },
+  {
+   "texto": "Texto com __sublinhado__ e *asterisco* e <tag>",
+   "tipo": "h",
+   "esperado": "Texto com sublinhado e asterisco e tag."
+  },
+  {
+   "texto": "Texto com __sublinhado__ e *asterisco* e <tag>",
+   "tipo": "item",
+   "esperado": "Texto com sublinhado e asterisco e tag."
+  },
+  {
+   "texto": "x | y · z",
+   "tipo": "p",
+   "esperado": "X, y, z."
+  },
+  {
+   "texto": "x | y · z",
+   "tipo": "h",
+   "esperado": "X, y, z."
+  },
+  {
+   "texto": "x | y · z",
+   "tipo": "item",
+   "esperado": "X, y, z."
+  },
+  {
+   "texto": "minúscula no início",
+   "tipo": "p",
+   "esperado": "Minúscula no início."
+  },
+  {
+   "texto": "minúscula no início",
+   "tipo": "h",
+   "esperado": "Minúscula no início."
+  },
+  {
+   "texto": "minúscula no início",
+   "tipo": "item",
+   "esperado": "Minúscula no início."
+  },
+  {
+   "texto": "Termina com aspas”",
+   "tipo": "p",
+   "esperado": "Termina com aspas”."
+  },
+  {
+   "texto": "Termina com aspas”",
+   "tipo": "h",
+   "esperado": "Termina com aspas”."
+  },
+  {
+   "texto": "Termina com aspas”",
+   "tipo": "item",
+   "esperado": "Termina com aspas”."
+  },
+  {
+   "texto": "O Wumpus e o molho do homem, MOLHO e Homens.",
+   "tipo": "p",
+   "esperado": "O Uâmpus e o môlho do hõmem, Môlho e Hõmens."
+  },
+  {
+   "texto": "O Wumpus e o molho do homem, MOLHO e Homens.",
+   "tipo": "h",
+   "esperado": "O Uâmpus e o môlho do hõmem, Môlho e Hõmens."
+  },
+  {
+   "texto": "O Wumpus e o molho do homem, MOLHO e Homens.",
+   "tipo": "item",
+   "esperado": "O Uâmpus e o môlho do hõmem, Môlho e Hõmens."
+  }
+ ]
+}

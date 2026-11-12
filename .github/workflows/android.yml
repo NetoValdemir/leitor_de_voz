@@ -1,0 +1,78 @@
+name: APK Android
+
+on:
+  push:
+    branches: [main]
+    paths: ["android/**", "testes/**", ".github/workflows/android.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Código do espeak-ng 1.52.0 (conversão em fonemas, GPL-3.0)
+        run: git clone --depth 1 -b 1.52.0 https://github.com/espeak-ng/espeak-ng android/app/src/main/cpp/espeak-ng
+
+      - name: NDK, CMake e plataforma Android
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "ndk;27.2.12479018" "cmake;3.22.1" "platforms;android-35" "build-tools;35.0.0" > /dev/null
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Testes do núcleo (extração de PDF/Word/TXT, frases, pausas, pronúncia)
+        working-directory: android
+        run: ./gradlew --no-daemon :core:test
+
+      # Assinatura estável (cada APK novo instala por cima do anterior): a chave fica SÓ
+      # nos segredos do repositório (ANDROID_KEYSTORE_BASE64 e ANDROID_KEYSTORE_SENHA),
+      # criados com android/gerar_chave.py. Sem eles, o APK sai com uma chave de teste.
+      - name: Preparar a chave de assinatura
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_SENHA: ${{ secrets.ANDROID_KEYSTORE_SENHA }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ] && [ -n "$KEYSTORE_SENHA" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/leitor.p12"
+            echo "LEITOR_KEYSTORE=$RUNNER_TEMP/leitor.p12" >> "$GITHUB_ENV"
+            echo "LEITOR_KEYSTORE_SENHA=$KEYSTORE_SENHA" >> "$GITHUB_ENV"
+            echo "Assinando com a chave dos segredos do repositório."
+          else
+            echo "::warning::Segredos de assinatura não configurados: o APK sai com uma chave de teste (veja android/gerar_chave.py)."
+          fi
+
+      - name: Compilar o APK
+        working-directory: android
+        run: ./gradlew --no-daemon :app:assembleRelease
+
+      - name: Nomear o APK
+        run: cp android/app/build/outputs/apk/release/app-release.apk "LeitorDeVoz-v${{ github.run_number }}.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LeitorDeVoz-v${{ github.run_number }}
+          path: LeitorDeVoz-v*.apk
+
+      - name: Publicar em Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-v${{ github.run_number }}
+          name: Leitor de Voz para Android — versão ${{ github.run_number }}
+          make_latest: true
+          files: LeitorDeVoz-v*.apk
+          body: |
+            **Como instalar no celular**
+            1. Abra esta página no celular e toque em `LeitorDeVoz-v${{ github.run_number }}.apk` (em "Assets").
+            2. Abra o arquivo baixado. Se o Android pedir, permita "Instalar apps desconhecidos" para o navegador.
+            3. Na primeira abertura, o app baixa a voz Kokoro (325 MB no modelo Completo; 92 MB no Compacto) — use o Wi-Fi.
+
+            Versões novas instalam por cima da anterior, mantendo a voz baixada e o dicionário de pronúncia.

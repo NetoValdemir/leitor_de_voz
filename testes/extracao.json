@@ -1,0 +1,1660 @@
+{
+ "relatorio.pdf": {
+  "titulo": "Código Limpo",
+  "blocos": [
+   {
+    "tipo": "nota",
+    "nivel": 0,
+    "frases": [
+     "WUMPUS 3D · RELATÓRIO DE REFATORAÇÃO"
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "titulo",
+    "nivel": 1,
+    "frases": [
+     "Código Limpo"
+    ],
+    "pausas": [
+     1.1
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O que mudou na organização do código, como foi comprovado que o jogo continua igual e o que se ganhou em leitura, manutenção, memória e repetição."
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "nota",
+    "nivel": 0,
+    "frases": [
+     "Base: commit 8544609 (main)"
+    ],
+    "pausas": [
+     0.5
+    ]
+   },
+   {
+    "tipo": "nota",
+    "nivel": 0,
+    "frases": [
+     "Branch: refatoracao"
+    ],
+    "pausas": [
+     0.5
+    ]
+   },
+   {
+    "tipo": "nota",
+    "nivel": 0,
+    "frases": [
+     "Data: 31 de outubro de 2026"
+    ],
+    "pausas": [
+     0.5
+    ]
+   },
+   {
+    "tipo": "nota",
+    "nivel": 0,
+    "frases": [
+     "Referência: MARTIN, Robert C. Clean Code.",
+     "Prentice Hall, 2008."
+    ],
+    "pausas": [
+     0.45,
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "Sumário"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "1 Resumo"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "2 Princípios aplicados"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "3 O que mudou, parte por parte"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "4 Como foi comprovado que nada quebrou"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "5 Benefícios"
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "1 Resumo"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade.",
+     "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim."
+    ],
+    "pausas": [
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "A principal motivação foi a dificuldade de manutenção: cada nova funcionalidade exigia alterações em vários arquivos ao mesmo tempo.",
+     "Com a reorganização, o tempo médio para implementar uma mudança caiu de forma considerável, segundo as medições da equipe."
+    ],
+    "pausas": [
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade.",
+     "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim."
+    ],
+    "pausas": [
+     0.45,
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "2 Princípios aplicados"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Os principais princípios foram:"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Funções pequenas, com no máximo vinte linhas e um único nível de abstração."
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Nomes significativos para variáveis, funções e classes"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Eliminação de código duplicado (princípio DRY)"
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 4,
+    "frases": [
+     "2.1 Responsabilidade única"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade.",
+     "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim."
+    ],
+    "pausas": [
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Cada classe passou a ter apenas um motivo para mudar.",
+     "O renderizador, por exemplo, não conhece mais as regras do jogo, e o motor de regras não sabe nada sobre a interface gráfica utilizada."
+    ],
+    "pausas": [
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade.",
+     "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim."
+    ],
+    "pausas": [
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas que fazem uma coisa só, nomes que explicam a intenção, nada de repetição, e cada módulo com uma única responsabilidade.",
+     "Nenhuma regra do jogo foi alterada durante o processo de refatoração, e todos os testes automatizados continuaram passando do início ao fim."
+    ],
+    "pausas": [
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "nota",
+    "nivel": 0,
+    "frases": [
+     "1. Medição feita entre agosto e outubro de 2026."
+    ],
+    "pausas": [
+     0.5
+    ]
+   }
+  ]
+ },
+ "livro.pdf": {
+  "titulo": "Vida e obra de Machado de Assis",
+  "blocos": [
+   {
+    "tipo": "titulo",
+    "nivel": 1,
+    "frases": [
+     "Vida e obra de Machado de Assis"
+    ],
+    "pausas": [
+     1.1
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "Capítulo 1"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839.",
+     "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento.",
+     "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira nº 23 da Academia Brasileira de Letras.",
+     "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens.",
+     "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares."
+    ],
+    "pausas": [
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Qual seria, afinal, o segredo de sua escrita?",
+     "Muitos críticos afirmam que é a economia de palavras!",
+     "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor."
+    ],
+    "pausas": [
+     0.55,
+     0.55,
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "Capítulo 2"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839.",
+     "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento.",
+     "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira nº 23 da Academia Brasileira de Letras.",
+     "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens.",
+     "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares."
+    ],
+    "pausas": [
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Qual seria, afinal, o segredo de sua escrita?",
+     "Muitos críticos afirmam que é a economia de palavras!",
+     "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor."
+    ],
+    "pausas": [
+     0.55,
+     0.55,
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "Capítulo 3"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839.",
+     "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento.",
+     "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira nº 23 da Academia Brasileira de Letras.",
+     "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens.",
+     "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares.",
+     "Qual seria, afinal, o segredo de sua escrita?",
+     "Muitos críticos afirmam que é a economia de palavras!",
+     "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor."
+    ],
+    "pausas": [
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.55,
+     0.55,
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "Capítulo 4"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839.",
+     "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento.",
+     "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira nº 23 da Academia Brasileira de Letras.",
+     "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens.",
+     "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares."
+    ],
+    "pausas": [
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Qual seria, afinal, o segredo de sua escrita?",
+     "Muitos críticos afirmam que é a economia de palavras!",
+     "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor."
+    ],
+    "pausas": [
+     0.55,
+     0.55,
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "Capítulo 5"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839.",
+     "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento.",
+     "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira nº 23 da Academia Brasileira de Letras.",
+     "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens.",
+     "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares."
+    ],
+    "pausas": [
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Qual seria, afinal, o segredo de sua escrita?",
+     "Muitos críticos afirmam que é a economia de palavras!",
+     "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor."
+    ],
+    "pausas": [
+     0.55,
+     0.55,
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "Capítulo 6"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Machado de Assis nasceu no Rio de Janeiro, em 21 de junho de 1839.",
+     "Filho de um pintor de paredes e de uma lavadeira açoriana, teve uma infância pobre no Morro do Livramento.",
+     "Apesar das dificuldades, tornou-se um dos maiores escritores da literatura brasileira, sendo o fundador da cadeira nº 23 da Academia Brasileira de Letras.",
+     "O Sr. Joaquim Maria escreveu romances, contos, crônicas, poesias e peças de teatro; sua obra é marcada pela ironia, pelo pessimismo e pela análise psicológica das personagens.",
+     "Entre 1881 e 1908, publicou obras-primas como Memórias Póstumas de Brás Cubas, Quincas Borba e Dom Casmurro, que custavam cerca de 3,5 mil-réis e venderam mais de 10.000 exemplares.",
+     "Qual seria, afinal, o segredo de sua escrita?",
+     "Muitos críticos afirmam que é a economia de palavras!",
+     "Outros, porém, destacam a ironia refinada e a conversa constante com o leitor."
+    ],
+    "pausas": [
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.55,
+     0.55,
+     0.8
+    ]
+   }
+  ]
+ },
+ "relatorio.docx": {
+  "titulo": "Código Limpo",
+  "blocos": [
+   {
+    "tipo": "titulo",
+    "nivel": 1,
+    "frases": [
+     "Código Limpo"
+    ],
+    "pausas": [
+     1.1
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O que mudou na organização do código e o que se ganhou em leitura e manutenção."
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 2,
+    "frases": [
+     "1 Resumo"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas, nomes claros e nada de repetição.",
+     "Nenhuma regra do jogo foi alterada."
+    ],
+    "pausas": [
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "A primeira linha termina aqui, e continua depois de uma quebra de linha manual."
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 2,
+    "frases": [
+     "2 Princípios aplicados"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Os principais princípios foram:"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Funções pequenas, com no máximo vinte linhas"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Nomes significativos para variáveis e classes"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Eliminação de código duplicado"
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "2.1 Responsabilidade única"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Separar o renderizador das regras"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Isolar o motor de áudio"
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 4,
+    "frases": [
+     "Resultados medidos"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Métrica: Valor"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Linhas por função: 12 em média"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Duplicação: caiu 40%"
+    ],
+    "pausas": [
+     0.7
+    ]
+   },
+   {
+    "tipo": "citacao",
+    "nivel": 0,
+    "frases": [
+     "Como disse o autor, “código limpo é simples e direto”."
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Fim do relatório."
+    ],
+    "pausas": [
+     0.8
+    ]
+   }
+  ]
+ },
+ "relatorio.doc": {
+  "titulo": "Código Limpo",
+  "blocos": [
+   {
+    "tipo": "titulo",
+    "nivel": 1,
+    "frases": [
+     "Código Limpo"
+    ],
+    "pausas": [
+     1.1
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O que mudou na organização do código e o que se ganhou em leitura e manutenção."
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 2,
+    "frases": [
+     "1 Resumo"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "O código do Wumpus 3D foi reorganizado seguindo os princípios do livro Código Limpo, de Robert C. Martin: funções pequenas, nomes claros e nada de repetição.",
+     "Nenhuma regra do jogo foi alterada."
+    ],
+    "pausas": [
+     0.45,
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "A primeira linha termina aqui, e continua depois de uma quebra de linha manual."
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 2,
+    "frases": [
+     "2 Princípios aplicados"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Os principais princípios foram:"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Funções pequenas, com no máximo vinte linhas"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Nomes significativos para variáveis e classes"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Eliminação de código duplicado"
+    ],
+    "pausas": [
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "2.1 Responsabilidade única"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Separar o renderizador das regras"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Isolar o motor de áudio"
+    ],
+    "pausas": [
+     0.7
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Resultados medidos"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Métrica: Valor"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Linhas por função: 12 em média"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Duplicação: caiu 40%"
+    ],
+    "pausas": [
+     0.7
+    ]
+   },
+   {
+    "tipo": "citacao",
+    "nivel": 0,
+    "frases": [
+     "Como disse o autor, “código limpo é simples e direto”."
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Fim do relatório."
+    ],
+    "pausas": [
+     0.8
+    ]
+   }
+  ]
+ },
+ "Lists.doc": {
+  "titulo": "Lists",
+  "blocos": [
+   {
+    "tipo": "h",
+    "nivel": 2,
+    "frases": [
+     "Heading Level 1"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "This document has different lists in it for testing"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Unordered list 1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "UL 2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "UL 3"
+    ],
+    "pausas": [
+     0.7
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Next up is an ordered list:"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Ordered list 1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 3"
+    ],
+    "pausas": [
+     0.7
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Now for an un-ordered list with a different bullet style:"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Tick 1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Tick 2"
+    ],
+    "pausas": [
+     0.7
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Multi-level un-ordered list:"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 1:1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 1:2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 2:1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 2:2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 2:3"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 3:1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 4:1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 5:1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 5:2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 2:4"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "ML 1:3"
+    ],
+    "pausas": [
+     0.7
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Multi-level ordered list:"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 2.1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 2.2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 2.2.1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 2.2.2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 2.2.2.1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 2.2.3"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "OL 3"
+    ],
+    "pausas": [
+     0.7
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Finally we want some indents, to tell the difference"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Indented once"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Indented twice"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Indented three times"
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "The end!"
+    ],
+    "pausas": [
+     0.8
+    ]
+   }
+  ]
+ },
+ "heading123.docx": {
+  "titulo": "First paragraph",
+  "blocos": [
+   {
+    "tipo": "titulo",
+    "nivel": 1,
+    "frases": [
+     "First paragraph"
+    ],
+    "pausas": [
+     1.1
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "FffLorem ipsum dolor sit amet, consectetur adipiscing elit.",
+     "Curabitur bibendum, risus ac suscipit venenatis, sem nibh pretium lectus, ut condimentum dolor elit id dolor.",
+     "Sed non purus lorem.",
+     "Vestibulum sagittis dictum sagittis.",
+     "Aliquam ut malesuada elit.",
+     "Aliquam nec sapien erat.",
+     "Etiam accumsan pharetra consequat.",
+     "Aliquam quis turpis tortor.",
+     "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+     "Curabitur facilisis interdum eleifend.",
+     "Mauris sollicitudin lectus nec nulla adipiscing vitae convallis tortor scelerisque.",
+     "Sed blandit dui eget lacus bibendum nec tristique massa elementum. ffff"
+    ],
+    "pausas": [
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 3,
+    "frases": [
+     "Second paragraph"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "FfPellentesque tristique scelerisque libero ut sagittis.",
+     "Suspendisse sit amet augue id magna placerat ornare vel vitae enim.",
+     "Morbi auctor purus vel tortor accumsan convallis ultricies enim rutrum.",
+     "Nulla ac libero arcu.",
+     "Sed pretium faucibus ante vel facilisis.",
+     "In scelerisque neque vitae turpis consectetur ultricies sit amet eu mauris.",
+     "Sed vel lorem sed magna sodales fermentum.",
+     "Suspendisse lectus mauris, vehicula nec commodo in, tempor a dui.",
+     "Aliquam sit amet velit dui.",
+     "In auctor mauris felis, vitae laoreet eros.",
+     "Quisque et ipsum eu massa tristique elementum."
+    ],
+    "pausas": [
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     1.0
+    ]
+   },
+   {
+    "tipo": "h",
+    "nivel": 4,
+    "frases": [
+     "Third paragraph"
+    ],
+    "pausas": [
+     0.95
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "ffPellentesque tristique scelerisque libero ut sagittis.",
+     "Suspendisse sit amet augue id magna placerat ornare vel vitae enim.",
+     "Morbi auctor purus vel tortor accumsan convallis ultricies enim rutrum.",
+     "Nulla ac libero arcu.",
+     "Sed pretium faucibus ante vel facilisis.",
+     "In scelerisque neque vitae turpis consectetur ultricies sit amet eu mauris.",
+     "Sed vel lorem sed magna sodales fermentum.",
+     "Suspendisse lectus mauris, vehicula nec commodo in, tempor a dui.",
+     "Aliquam sit amet velit dui.",
+     "In auctor mauris felis, vitae laoreet eros.",
+     "Quisque et ipsum eu massa tristique elementum."
+    ],
+    "pausas": [
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.45,
+     0.8
+    ]
+   }
+  ]
+ },
+ "Numbering.docx": {
+  "titulo": "Numbering",
+  "blocos": [
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level 1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level 2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level 3"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level 4"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level3"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level3"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level1"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level2"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Level3"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "One"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Two"
+    ],
+    "pausas": [
+     0.45
+    ]
+   },
+   {
+    "tipo": "item",
+    "nivel": 0,
+    "frases": [
+     "Three"
+    ],
+    "pausas": [
+     0.45
+    ]
+   }
+  ]
+ },
+ "curto.txt": {
+  "titulo": "curto",
+  "blocos": [
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Primeira frase curta."
+    ],
+    "pausas": [
+     0.8
+    ]
+   },
+   {
+    "tipo": "p",
+    "nivel": 0,
+    "frases": [
+     "Fim."
+    ],
+    "pausas": [
+     0.8
+    ]
+   }
+  ]
+ }
+}

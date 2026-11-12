@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Leitor de Voz</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="marca">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M9 12v8h4l5 4V8l-5 4z" fill="#fff"/><path d="M21 12a5 5 0 0 1 0 8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <span>Leitor</span>
+    </div>
+    <button id="btn-pronuncia" class="btn-topo" title="Pronúncia e voz">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg>
+      <span>Pronúncia</span>
+    </button>
+  </header>
+
+  <main>
+    <!-- Primeiro uso: baixar a voz -->
+    <section id="preparo" class="entrada" hidden>
+      <h1>Falta só a voz</h1>
+      <p class="sub">A leitura é feita no próprio celular, sem internet, com a voz Kokoro (licença livre Apache-2.0). Ela precisa ser baixada uma vez — de preferência no Wi-Fi.</p>
+      <div id="opcoes-modelo" class="opcoes-modelo"></div>
+      <button id="btn-baixar" class="btn-primario btn-largo">Baixar a voz</button>
+      <div id="progresso-download" class="progresso-download" hidden>
+        <div class="barra-download"><div id="barra-download"></div></div>
+        <p id="texto-download" class="sub"></p>
+        <button id="btn-cancelar-download" class="btn-sec">Cancelar</button>
+      </div>
+      <p id="erro-preparo" class="erro" role="alert" hidden></p>
+    </section>
+
+    <section id="entrada" class="entrada" hidden>
+      <h1>Ouça qualquer PDF, documento do Word ou página web</h1>
+      <p class="sub">Cole um endereço, escolha um arquivo, ou use "Compartilhar" em outro app e escolha o Leitor.</p>
+
+      <form id="form-url" class="linha-url" autocomplete="off">
+        <label for="url" class="oculto">Endereço da página ou do PDF</label>
+        <input id="url" type="url" inputmode="url" placeholder="https://exemplo.com.br/artigo" required>
+        <button type="submit" class="btn-primario">Ler</button>
+      </form>
+
+      <div class="ou"><span>ou</span></div>
+
+      <button id="zona" class="zona" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3-3 3 3"/></svg>
+        <strong>Escolher um arquivo</strong>
+        <span>PDF, Word (DOC/DOCX), HTML ou TXT · até 60 MB</span>
+      </button>
+
+      <p id="erro" class="erro" role="alert" hidden></p>
+      <div id="carregando" class="carregando" hidden><span class="giro"></span> <span id="carregando-texto">Extraindo o texto…</span></div>
+    </section>
+
+    <article id="leitura" class="leitura" hidden>
+      <div id="aviso-lento" class="aviso" hidden>
+        <span>Este aparelho está gerando a voz no limite da velocidade da fala. O modelo <strong>Compacto</strong> pode ser mais rápido.</span>
+        <button id="btn-ver-modelos" class="btn-sec">Ver opções</button>
+      </div>
+      <header>
+        <h2 id="titulo"></h2>
+        <p id="meta" class="meta"></p>
+      </header>
+      <div id="texto" class="texto"></div>
+    </article>
+  </main>
+
+  <div id="player" class="player" hidden>
+    <div class="barra-progresso" id="barra"><div id="progresso"></div></div>
+    <div class="controles">
+      <div class="grupo-botoes">
+        <button id="btn-ant" class="btn-icone" aria-label="Frase anterior">
+          <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zM9.5 12 18 6v12z"/></svg>
+        </button>
+        <button id="btn-play" class="btn-play" aria-label="Reproduzir">
+          <svg id="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="ic-pausa" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          <span id="ic-carrega" class="giro" hidden></span>
+        </button>
+        <button id="btn-prox" class="btn-icone" aria-label="Próxima frase">
+          <svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 18V6l8.5 6z"/></svg>
+        </button>
+      </div>
+      <div id="posicao" class="posicao"></div>
+      <div class="ajustes">
+        <label class="ajuste">
+          <span>Velocidade <output id="vel-valor">1,0×</output></span>
+          <input id="velocidade" type="range" min="0.6" max="2" step="0.1" value="1">
+        </label>
+        <label class="ajuste">
+          <span>Voz</span>
+          <select id="voz"></select>
+        </label>
+        <label class="ajuste">
+          <span>Pausas</span>
+          <select id="pausas">
+            <option value="0.6">Curtas</option>
+            <option value="1" selected>Normais</option>
+            <option value="1.5">Longas</option>
+          </select>
+        </label>
+        <button id="btn-novo" class="btn-novo" title="Abrir outro texto" aria-label="Abrir outro texto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14h6"/></svg>
+          <span>Abrir outro texto</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <dialog id="dlg-pronuncia" class="dialogo" aria-labelledby="dlg-titulo">
+    <div class="dlg-conteudo">
+      <header class="dlg-topo">
+        <h2 id="dlg-titulo">Pronúncia e voz</h2>
+        <button type="button" class="btn-fechar" data-fechar aria-label="Fechar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+
+      <section class="dlg-secao">
+        <h3>Palavras específicas</h3>
+        <p class="dlg-ajuda">Escreva a palavra como ela deve soar. Acentos abrem ou fecham vogais (<em>môlho</em>, <em>ólho</em>); <em>õ</em>/<em>ã</em> nasalizam (<em>hõmem</em>); use <em>ss</em> para som de s, <em>z</em> para som de z, <em>cs</em> para o x de táxi e <em>ch</em> para o x de xícara.</p>
+        <div class="linha-nova">
+          <input id="nova-palavra" type="text" placeholder="Palavra (ex.: molho)" autocomplete="off" autocapitalize="off" aria-label="Palavra">
+          <input id="nova-grafia" type="text" placeholder="Como falar (ex.: môlho)" autocomplete="off" autocapitalize="off" aria-label="Como falar">
+          <button type="button" id="btn-ouvir-nova" class="btn-ouvir" title="Ouvir" aria-label="Ouvir">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button type="button" id="btn-add-palavra" class="btn-sec">Adicionar</button>
+        </div>
+        <ul id="lista-palavras" class="lista-palavras"></ul>
+      </section>
+
+      <section class="dlg-secao">
+        <h3>Modelo de voz</h3>
+        <div id="modelos-dlg" class="opcoes-modelo"></div>
+        <p id="desempenho" class="dlg-ajuda"></p>
+      </section>
+
+      <footer class="dlg-rodape">
+        <span id="dlg-status" class="dlg-status" role="status"></span>
+        <button type="button" id="btn-concluir" class="btn-primario">Concluir</button>
+      </footer>
+      <p id="dlg-arquivo" class="dlg-arquivo"></p>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

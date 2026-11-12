@@ -12,3 +12,16 @@ __pycache__/
 
 # Dicionário de pronúncia pessoal (versões antigas salvavam na pasta do app)
 pronuncias*.json
+
+# Android (Gradle/NDK)
+android/.gradle/
+android/**/build/
+android/.kotlin/
+android/local.properties
+android/app/.cxx/
+# código do espeak-ng: baixado pelo GitHub Actions (ver .github/workflows/android.yml)
+android/app/src/main/cpp/espeak-ng/
+
+# Chaves de assinatura nunca vão para o repositório
+*.keystore
+*.jks
