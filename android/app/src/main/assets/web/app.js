@@ -27,6 +27,7 @@ const estado = {
   iniciado: false,     // já começou a tocar este documento (para retomar em vez de recomeçar)
   concluido: false,
   docId: "",
+  chaveDoc: "",        // identifica o documento para os marcadores (nome + nº de frases)
   vezes: [],           // velocidade de geração medida (× tempo real)
 };
 
@@ -60,6 +61,7 @@ function tela(nome) {
   mostrar(el.entrada, nome === "entrada");
   mostrar(el.leitura, nome === "leitura");
   mostrar(el.player, nome === "leitura");
+  mostrar($("btn-marcadores"), nome === "leitura");
   if (nome !== "leitura") document.title = "Leitor de Voz";
 }
 
@@ -115,18 +117,20 @@ function abrirDocumento(dados) {
 
   const TAGS = { titulo: "h1", h: "h2", p: "p", item: "p", citacao: "blockquote", nota: "p" };
   let lista = null;
+  let secao = "";
   for (const bloco of dados.blocos) {
     let tag = TAGS[bloco.tipo] || "p";
     if (bloco.tipo === "h") tag = bloco.nivel <= 2 ? "h2" : bloco.nivel === 3 ? "h3" : "h4";
     const elBloco = document.createElement(bloco.tipo === "item" ? "li" : tag);
     elBloco.className = `bloco bloco-${bloco.tipo}`;
+    if (bloco.tipo === "h" || bloco.tipo === "titulo") secao = bloco.frases.join(" ");
     bloco.frases.forEach((texto) => {
       const span = document.createElement("span");
       span.className = "frase";
       span.textContent = texto;
       span.dataset.idx = estado.frases.length;
       elBloco.append(span, " ");
-      estado.frases.push({ texto, tipo: bloco.tipo, span });
+      estado.frases.push({ texto, tipo: bloco.tipo, span, secao });
     });
     if (bloco.tipo === "item") {
       if (!lista) { lista = document.createElement("ul"); lista.className = "lista"; el.texto.append(lista); }
@@ -143,6 +147,13 @@ function abrirDocumento(dados) {
   document.title = dados.titulo;
 
   estado.docId = dados.fonte;
+  estado.chaveDoc = `${dados.fonte}|${dados.total_frases}`;
+  desenharMarcas();
+  const marcados = marcadoresDoDoc();
+  $("texto-aviso-marcadores").textContent = marcados.length === 1
+    ? "Este documento tem 1 marcador salvo."
+    : `Este documento tem ${marcados.length} marcadores salvos.`;
+  mostrar($("aviso-marcadores"), marcados.length > 0);
   const salvo = Math.min(Number(posicaoSalva(estado.docId)) || 0, estado.frases.length - 1);
   mostrar(el.carregando, false);
   mostrarErro("");
@@ -158,7 +169,8 @@ function fecharDocumento() {
   Android.fecharDocumento();
   el.texto.replaceChildren();
   estado.frases = []; estado.tocando = false;
-  estado.docId = "";
+  estado.docId = ""; estado.chaveDoc = "";
+  if (dlgMarcadores.open) dlgMarcadores.close();
   tela("entrada");
 }
 
@@ -191,8 +203,9 @@ function destacar(idx, rolar = true) {
   f.span.classList.remove("lida");
   if (rolar) {
     const r = f.span.getBoundingClientRect();
+    const topo = document.querySelector(".topo").getBoundingClientRect().bottom + 12;
     const limite = window.innerHeight - el.player.offsetHeight - 40;
-    if (r.top < 80 || r.bottom > limite) f.span.scrollIntoView({ block: "center", behavior: "smooth" });
+    if (r.top < topo || r.bottom > limite) f.span.scrollIntoView({ block: "center", behavior: "smooth" });
   }
   const total = estado.frases.length;
   el.posicao.textContent = `Frase ${idx + 1} de ${total}`;
@@ -292,6 +305,7 @@ window.app = {
   /** Botão "voltar" do Android: fecha o painel ou o documento antes de sair do app. */
   voltar() {
     if (dlg.open) { dlg.close(); return true; }
+    if (dlgMarcadores.open) { dlgMarcadores.close(); return true; }
     if (!el.leitura.hidden) { fecharDocumento(); return true; }
     if (!el.preparo.hidden && infoModelo().pronto) { tela("entrada"); return true; }
     return false;
@@ -467,6 +481,117 @@ $("btn-ouvir-nova").addEventListener("click", (e) => {
 }));
 dlg.querySelectorAll("[data-fechar]").forEach((b) => b.addEventListener("click", () => dlg.close()));
 dlg.addEventListener("close", pararTeste);
+
+/* ------------------------------ Marcadores ---------------------------------- */
+/* Pontos salvos para continuar depois (ex.: "Capítulo 3"). Ficam no celular, por documento. */
+
+const dlgMarcadores = $("dlg-marcadores");
+
+function lerTodosMarcadores() { try { return JSON.parse(prefs.get("marcadores", "{}")) || {}; } catch { return {}; } }
+function marcadoresDoDoc() { return (lerTodosMarcadores()[estado.chaveDoc] || []).slice().sort((a, b) => a.idx - b.idx); }
+function salvarMarcadoresDoDoc(lista) {
+  const todos = lerTodosMarcadores();
+  if (lista.length) todos[estado.chaveDoc] = lista; else delete todos[estado.chaveDoc];
+  prefs.set("marcadores", JSON.stringify(todos));
+  desenharMarcas();
+}
+
+function desenharMarcas() {
+  const idxs = new Set(marcadoresDoDoc().map((m) => m.idx));
+  estado.frases.forEach((f, i) => f.span.classList.toggle("marcada", idxs.has(i)));
+  const btn = $("btn-marcadores");
+  btn.querySelector(".contador")?.remove();
+  if (idxs.size) {
+    const c = document.createElement("span");
+    c.className = "contador"; c.textContent = idxs.size;
+    btn.append(c);
+  }
+}
+
+let temporizadorToast = 0;
+function toast(msg) {
+  let t = document.querySelector(".toast");
+  if (!t) { t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); document.body.append(t); }
+  t.textContent = msg;
+  t.classList.add("visivel");
+  clearTimeout(temporizadorToast);
+  temporizadorToast = setTimeout(() => t.classList.remove("visivel"), 2200);
+}
+
+function nomeSugerido(idx) {
+  const f = estado.frases[idx];
+  const inicio = f.texto.split(/\s+/).slice(0, 6).join(" ");
+  return f.secao ? `${f.secao}` : inicio + (f.texto.split(/\s+/).length > 6 ? "…" : "");
+}
+
+function marcarAtual() {
+  if (!estado.frases.length) return;
+  const idx = estado.atual;
+  const lista = marcadoresDoDoc();
+  if (lista.some((m) => m.idx === idx)) { toast("Este ponto já está marcado"); return; }
+  const nome = prompt("Nome do marcador:", nomeSugerido(idx));
+  if (nome === null) return;   // cancelou
+  lista.push({ idx, nome: nome.trim() || nomeSugerido(idx), secao: estado.frases[idx].secao || "", trecho: estado.frases[idx].texto.slice(0, 90), criado: Date.now() });
+  salvarMarcadoresDoDoc(lista);
+  $("btn-marcar").classList.add("feito");
+  setTimeout(() => $("btn-marcar").classList.remove("feito"), 1200);
+  toast("Marcador salvo ✓");
+  if (dlgMarcadores.open) montarMarcadores();
+}
+
+function montarMarcadores() {
+  const ul = $("lista-marcadores");
+  ul.replaceChildren();
+  const lista = marcadoresDoDoc();
+  if (!lista.length) {
+    const li = document.createElement("li");
+    li.className = "vazia"; li.textContent = "Nenhum marcador neste documento.";
+    ul.append(li); return;
+  }
+  const total = estado.frases.length;
+  for (const m of lista) {
+    const li = document.createElement("li");
+    const ir = document.createElement("button");
+    ir.type = "button"; ir.className = "ir";
+    const data = new Date(m.criado).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+    const pct = Math.round(((m.idx + 1) / total) * 100);
+    ir.innerHTML = "<strong></strong><small></small><em></em>";
+    ir.querySelector("strong").textContent = m.nome;
+    ir.querySelector("small").textContent = `Frase ${m.idx + 1} de ${total} (${pct}%) · salvo em ${data}`;
+    ir.querySelector("em").textContent = `“${m.trecho}${m.trecho.length >= 90 ? "…" : ""}”`;
+    ir.addEventListener("click", () => {
+      dlgMarcadores.close();
+      mostrar($("aviso-marcadores"), false);
+      estado.concluido = false;
+      if (estado.tocando) Android.tocar(m.idx); else { Android.irPara(m.idx); destacar(m.idx); }
+    });
+    const apagar = document.createElement("button");
+    apagar.type = "button"; apagar.className = "btn-remover";
+    apagar.setAttribute("aria-label", `Apagar o marcador “${m.nome}”`);
+    apagar.innerHTML = ICONE_X;
+    apagar.addEventListener("click", () => {
+      if (!confirm(`Apagar o marcador “${m.nome}”?`)) return;
+      salvarMarcadoresDoDoc(marcadoresDoDoc().filter((x) => x.idx !== m.idx));
+      montarMarcadores();
+      $("marcadores-status").textContent = "Marcador apagado ✓";
+    });
+    li.append(ir, apagar);
+    ul.append(li);
+  }
+}
+
+function abrirMarcadores() {
+  $("marcadores-status").textContent = "";
+  montarMarcadores();
+  dlgMarcadores.showModal();
+}
+
+$("btn-marcar").addEventListener("click", marcarAtual);
+$("btn-marcar-aqui").addEventListener("click", marcarAtual);
+$("btn-marcadores").addEventListener("click", abrirMarcadores);
+$("btn-ver-marcadores").addEventListener("click", abrirMarcadores);
+$("btn-fechar-aviso-marcadores").addEventListener("click", () => mostrar($("aviso-marcadores"), false));
+dlgMarcadores.querySelectorAll("[data-fechar-marcadores]").forEach((b) => b.addEventListener("click", () => dlgMarcadores.close()));
 
 /* ------------------------------ Inicialização ------------------------------- */
 

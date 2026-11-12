@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="verde">#256F5C</color>
+    <color name="verde">#13847B</color>
     <color name="fundo">#F6F4EF</color>
     <style name="Tema" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowBackground">@color/fundo</item>

@@ -9,13 +9,19 @@
 <body>
   <header class="topo">
     <div class="marca">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M9 12v8h4l5 4V8l-5 4z" fill="#fff"/><path d="M21 12a5 5 0 0 1 0 8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <svg viewBox="5 5 98 98" aria-hidden="true"><rect x="5" y="5" width="98" height="98" rx="20" fill="#13847B"/><g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M68,37 H78 a3,3 0 0 1 3,3 V68 a3,3 0 0 1 -3,3 H74 L73,77 L67.5,71 H43 a3,3 0 0 1 -3,-3 V64"/><path d="M30,29 H65 a3,3 0 0 1 3,3 V60 a3,3 0 0 1 -3,3 H41 L34,71 L35,63 H30 a3,3 0 0 1 -3,-3 V32 a3,3 0 0 1 3,-3 Z"/><path d="M34,43 H39 L47,37 V57 L39,51 H34 Z"/><path d="M53,43 V51"/><path d="M59,39 V55"/></g></svg>
       <span>Leitor</span>
     </div>
+    <div class="acoes-topo">
+    <button id="btn-marcadores" class="btn-topo" title="Marcadores deste documento" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+      <span>Marcadores</span>
+    </button>
     <button id="btn-pronuncia" class="btn-topo" title="Pronúncia e voz">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg>
       <span>Pronúncia</span>
     </button>
+    </div>
   </header>
 
   <main>
@@ -71,6 +77,13 @@
         <span>Este aparelho está gerando a voz no limite da velocidade da fala. O modelo <strong>Compacto</strong> pode ser mais rápido.</span>
         <button id="btn-ver-modelos" class="btn-sec">Ver opções</button>
       </div>
+      <div id="aviso-marcadores" class="aviso" hidden>
+        <span id="texto-aviso-marcadores"></span>
+        <div class="aviso-botoes">
+          <button id="btn-ver-marcadores" class="btn-sec">Ver marcadores</button>
+          <button id="btn-fechar-aviso-marcadores" class="btn-sec" aria-label="Fechar">✕</button>
+        </div>
+      </div>
       <header>
         <h2 id="titulo"></h2>
         <p id="meta" class="meta"></p>
@@ -93,6 +106,9 @@
         </button>
         <button id="btn-prox" class="btn-icone" aria-label="Próxima frase">
           <svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 18V6l8.5 6z"/></svg>
+        </button>
+        <button id="btn-marcar" class="btn-icone btn-marcar" aria-label="Marcar este ponto" title="Marcar este ponto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/><path d="M12 7v6M9 10h6"/></svg>
         </button>
       </div>
       <div id="posicao" class="posicao"></div>
@@ -155,6 +171,24 @@
         <button type="button" id="btn-concluir" class="btn-primario">Concluir</button>
       </footer>
       <p id="dlg-arquivo" class="dlg-arquivo"></p>
+    </div>
+  </dialog>
+
+  <dialog id="dlg-marcadores" class="dialogo" aria-labelledby="dlg-marcadores-titulo">
+    <div class="dlg-conteudo">
+      <header class="dlg-topo">
+        <h2 id="dlg-marcadores-titulo">Marcadores</h2>
+        <button type="button" class="btn-fechar" data-fechar-marcadores aria-label="Fechar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+      <p class="dlg-ajuda">Toque num marcador para continuar a leitura daquele ponto. Para criar um, use o botão <strong>marcador</strong> na barra de controles, durante a leitura.</p>
+      <button type="button" id="btn-marcar-aqui" class="btn-sec btn-largo-sec">+ Marcar a frase atual</button>
+      <ul id="lista-marcadores" class="lista-marcadores"></ul>
+      <footer class="dlg-rodape">
+        <span id="marcadores-status" class="dlg-status" role="status"></span>
+        <button type="button" class="btn-primario" data-fechar-marcadores>Concluir</button>
+      </footer>
     </div>
   </dialog>
 
